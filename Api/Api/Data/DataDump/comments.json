@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "user": null,
+    "studentId": 6,
+    "student": null,
+    "comment": "komic"
+  },
+  {
+    "id": 2,
+    "userId": 1,
+    "user": null,
+    "studentId": 8,
+    "student": null,
+    "comment": "komcccmcm"
+  },
+  {
+    "id": 3,
+    "userId": 1,
+    "user": null,
+    "studentId": 9,
+    "student": null,
+    "comment": "kgdldakgldak"
+  },
+  {
+    "id": 4,
+    "userId": 1,
+    "user": null,
+    "studentId": 6,
+    "student": null,
+    "comment": "godakogkdao"
+  },
+  {
+    "id": 6,
+    "userId": 1,
+    "user": null,
+    "studentId": 20,
+    "student": null,
+    "comment": "gddaad"
+  },
+  {
+    "id": 7,
+    "userId": 1,
+    "user": null,
+    "studentId": 9,
+    "student": null,
+    "comment": "dggd"
+  },
+  {
+    "id": 8,
+    "userId": 1,
+    "user": null,
+    "studentId": 9,
+    "student": null,
+    "comment": "komentar"
+  },
+  {
+    "id": 9,
+    "userId": 1,
+    "user": null,
+    "studentId": 24,
+    "student": null,
+    "comment": "komentarcic"
+  },
+  {
+    "id": 10,
+    "userId": 1,
+    "user": null,
+    "studentId": 24,
+    "student": null,
+    "comment": "komentarcic1"
+  }
+]
