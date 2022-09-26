@@ -1,0 +1,80 @@
+<!-- <p *ngFor="let student of students">{{student.name}}</p> -->
+
+<table class="table table-hover mr-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name
+          <button (click)="sortName()" class="btn btn-sm btn-light">Sort</button>
+        </th>
+        <th scope="col">
+          Start date
+          <button (click)="sortStartDate()" class="btn btn-sm btn-light">Sort</button>
+        </th>
+        <th scope="col">
+          End date
+          <button (click)="sortEndDate()" class="btn btn-sm btn-light">Sort</button>
+        </th>
+        <th scope="col">Jap
+          <button (click)="sortJap()" class="btn btn-sm btn-light">Sort</button>
+        </th>
+        <th scope="col">Status
+          <button (click)="sortStatus()" class="btn btn-sm btn-light">Sort</button>
+        </th>
+        <th scope="col">
+            Actions
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td> 
+            
+        </td>
+        <td><input [(ngModel)]="nameFilter" placeholder="name" (keyup)="onFilter()"/></td>
+        <td><input  [(ngModel)]="startDateFilter" type="date"  placeholder="start date" (input)="onFilter()"/></td>
+        <td><input [disabled]="true" type="date"  placeholder="end date" /></td>
+        <td><input [(ngModel)]="japFilter" placeholder="jap" (keyup)="onFilter()"/></td>
+        <td><input [(ngModel)]="statusFilter" placeholder="status" (keyup)="onFilter()"/></td>
+    </tr>
+
+    <tr *ngFor="let selection of selections" >
+        <th scope="row"></th>
+        <td>{{selection.name}}</td>
+        <td>{{selection.startDate  | date:"MMM d, y"}}</td>
+        <td>{{selection.endDate  | date:"MMM d, y"}}</td>
+        <td>{{selection.jap}}</td>
+        <td>{{selection.status}}</td>
+        <td>
+            <button routerLink="/selection/{{selection.id}}" class="btn btn-sm btn-primary mr-2">
+                <a>Details</a>
+            </button>
+            <button routerLink="/selection/edit/{{selection.id}}" class="btn btn-sm btn-primary mr-2">Edit</button>
+            <button class="btn btn-sm btn-primary mr-2" (click)="deleteSelection(selection.id)">Delete</button>
+
+        
+        </td>
+      </tr>
+     
+      
+    </tbody>
+  </table>
+  <div>
+    <pagination *ngIf="pagination"
+    [boundaryLinks]="true"
+    [totalItems]="pagination.TotalItems"
+    [itemsPerPage]="pagination.ItemsPerPage"
+    [(ngModel)]="pagination.CurrentPage"
+    (pageChanged)="pageChanged($event)"
+    previousText="&lsaquo;"
+    nextText="&rsaquo;"
+    firstText="&laquo;"
+    lastText="&raquo;"
+    >
+
+      
+    </pagination>
+
+  </div>
+  <button routerLink="/selections/add" class="btn btn-primary mx-2 my-2">Add new selection</button>

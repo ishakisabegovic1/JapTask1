@@ -1,0 +1,47 @@
+<div class="col g-5" >
+    <div class="col-4">
+        <h1>Adding selection</h1>
+    </div>
+   
+<div class="col-5">
+    <form #editForm="ngForm" (ngSubmit)="addSelection()">
+    <label for="name" class="form-label mx-2">Name</label>
+    <input [(ngModel)]="selection.name" type="text" name="name" class="form-control mx-2 mb-3"/>
+   
+    <label for="selection" class="form-label mx-2">Jap</label>
+    <select [(ngModel)]="selection.japId"  name="japId" class="form-control mx-2 mb-3"  type="text">  
+    
+        <option *ngFor="let jap of japs" [value]="jap.id">
+            {{jap.name}} 
+        </option>
+
+
+    </select>    
+    <!-- <input [(ngModel)]="student.selectionId" type="text" name="selectionId" class="form-control mx-2"/> -->
+    <label for="dateOfBirth" class="form-label mx-2">Start date</label>
+    <input [(ngModel)]="selection.startDate" type="date" name="startDate" class="form-control mx-2 mb-3" />
+    <label for="dateOfBirth" class="form-label mx-2">End date</label>
+    <input [(ngModel)]="selection.endDate" type="date" name="endDate" class="form-control mx-2 mb-3" />
+
+    <label for="status" class="form-label mx-2">Selection Status</label>
+    <!-- <input [(ngModel)]="student.studentStatus" type="text" name="studentStatus" class="form-control mx-2" /> -->
+    <select [(ngModel)]="selection.status"  name="status" class="form-control mx-2 mb-3" type="text">
+        <option>Active</option>
+        <option>Completed</option>
+   
+
+    </select>
+   
+    <button [disabled]="!editForm.dirty"  type="submit" class="btn btn-success mx-2 my-4">Save</button>
+    <button class="btn btn-secondary mx-2 my-4" routerLink="/selections">Back</button>
+</form>
+   
+    
+   
+
+    
+</div>    
+    
+    
+    </div>
+    

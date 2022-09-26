@@ -1,0 +1,67 @@
+<div class="col g-5" *ngIf="student" >
+<div class="row">
+  <div class="shadow-lg card col-6 mt-4">
+  <div class="col">
+    <h5 class="card-title mt-2" style="color:rgb(8, 97, 222)">Student info</h5>
+    <ul class="list-group list-group-flush">
+
+<li class="list-group-item"><strong>Name: </strong>{{student.name}}</li>
+<li class="list-group-item"><strong>Date of birth: </strong>{{student.dateOfBirth | date:"MMM d, y"}}</li>
+<li class="list-group-item"><strong>Selection: </strong>{{student.selection}}</li>
+<li class="list-group-item" *ngIf="selection"><strong>Selection Status: </strong>{{selection.status}}</li>
+<li class="list-group-item" *ngIf="selection"><strong>Start date: </strong>{{selection.startDate | date:"MMM d, y"}}</li>
+<li class="list-group-item" *ngIf="selection"><strong>End date: </strong> {{selection.endDate | date:"MMM d, y"}}</li>
+<li class="list-group-item" *ngIf="student"><strong>Student Status: </strong>{{student.studentStatus}}</li>
+
+</ul>
+
+<button class="btn btn-secondary mx-2 my-4" routerLink="/students">Back</button>
+</div>
+</div>
+<div class="card shadow col mt-4">
+<div class="col">
+
+  <table class="table table-hover mr-5 mt-3">
+    <thead>
+      <tr>
+        
+        <th scope="col">
+            Comments
+        </th>
+        
+        
+        <th scope="col">
+            Actions
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
+    
+
+    <tr *ngFor="let comment of comments" >
+        
+        <td>{{comment.comment}}</td>
+      
+        
+        <td>
+            
+            <button class="btn btn-large btn-primary mr-2" (click)="deleteComment(comment.id)">Delete</button>
+
+        
+        </td>
+      </tr>
+     
+      
+    </tbody>
+  </table>
+
+<input [(ngModel)]="newComment.comment" type="text" />
+  <button class="btn btn-primary mx-2 my-4" (click)="addComment(student.id)" >Add new comment</button>
+</div>
+</div>
+
+</div>
+</div>
+
+

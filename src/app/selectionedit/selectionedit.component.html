@@ -1,0 +1,48 @@
+<div class="col g-5" *ngIf="selection" >
+    <div class="col-4">
+        <h1>Editing selection</h1>
+    </div>
+    <div class="col-8">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            You have made changes. Any unsaved changes will be lost.
+        </div>
+    </div>
+<div class="col-5">
+    <form #editForm="ngForm" (ngSubmit)="updateSelection()">
+    <label for="name" class="form-label mx-2">Name</label>
+    <input [(ngModel)]="selection.name" type="text" name="name" class="form-control mx-2 mb-3"/>
+   
+    <label for="selection" class="form-label mx-2">Jap</label>
+    <select [(ngModel)]="selection.japId"  name="japId" class="form-control mx-2 mb-3" type="text">  
+    
+        <option *ngFor="let jap of japs" [value]="jap.id">
+            {{jap.name}} 
+        </option>
+
+
+    </select>    
+    <!-- <input [(ngModel)]="student.selectionId" type="text" name="selectionId" class="form-control mx-2"/> -->
+    <label for="dateOfBirth" class="form-label mx-2">Start date</label>
+    <input [(ngModel)]="selection.startDate" type="date" name="dateOfBirth" class="form-control mx-2 mb-3" />
+    <label for="status" class="form-label mx-2">Student Status</label>
+    <!-- <input [(ngModel)]="student.studentStatus" type="text" name="studentStatus" class="form-control mx-2" /> -->
+    <select [(ngModel)]="selection.status"  name="studentStatus" class="form-control mx-2 mb-3" type="text">
+        <option>Active</option>
+        <option>Completed</option>
+   
+
+    </select>
+   
+    <button [disabled]="!editForm.dirty"  type="submit" class="btn btn-success mx-2 my-4">Save</button>
+    <button class="btn btn-secondary mx-2 my-4" routerLink="/selections">Back</button>
+</form>
+   
+    
+   
+
+    
+</div>    
+    
+    
+    </div>
+    

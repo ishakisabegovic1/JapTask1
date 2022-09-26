@@ -1,0 +1,51 @@
+<div class="col g-5" *ngIf="student" >
+    <div class="col-4">
+        <h1>Editing student</h1>
+    </div>
+    <div class="col-8">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            You have made changes. Any unsaved changes will be lost.
+        </div>
+    </div>
+<div class="col-5">
+    <form #editForm="ngForm" (ngSubmit)="updateStudent()">
+
+    <label for="name" class="form-label mx-2">Name</label>
+    <input [(ngModel)]="student.name" type="text" name="name" class="form-control mx-2 mb-3"/>
+    <label for="address" class="form-label mx-2">Address</label>
+    <input [(ngModel)]="student.address" type="text" name="address" class="form-control mx-2 mb-3"/>
+    <label for="selection" class="form-label mx-2">Selection</label>
+    <select [(ngModel)]="student.selectionId"  name="selectionId" class="form-control mx-2 mb-3" type="text">  
+    
+        <option *ngFor="let selection1 of selections" [value]="selection1.id">
+            {{selection1.name}} 
+        </option>
+
+
+    </select>    
+    <!-- <input [(ngModel)]="student.selectionId" type="text" name="selectionId" class="form-control mx-2"/> -->
+    <label for="dateOfBirth" class="form-label mx-2">Date Of Birth</label>
+    <input [(ngModel)]="student.dateOfBirth" type="date" name="dateOfBirth" class="form-control mx-2 mb-3" />
+    <label for="status" class="form-label mx-2">Student Status</label>
+    <!-- <input [(ngModel)]="student.studentStatus" type="text" name="studentStatus" class="form-control mx-2" /> -->
+    <select [(ngModel)]="student.studentStatus"  name="studentStatus" class="form-control mx-2 mb-3" type="text">
+        <option>Success</option>
+        <option>Failed</option>
+        <option>Extended</option>
+        <option>InProgress</option>
+
+    </select>
+   
+    <button [disabled]="!editForm.dirty"  type="submit" class="btn btn-success mx-2 my-4">Save</button>
+    <button class="btn btn-secondary mx-2 my-4" routerLink="/students">Back</button>
+</form>
+   
+    
+   
+
+    
+</div>    
+    
+    
+    </div>
+    
