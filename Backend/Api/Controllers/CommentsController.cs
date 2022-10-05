@@ -1,4 +1,4 @@
-﻿using Api.Data;
+using Api.Data;
 using Api.DTOs;
 using Api.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -6,23 +6,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Controllers
 {
-    public class UserStudentsController : BaseApiController
+    public class CommentsController : BaseApiController
     {
         private readonly AppDbContext _context;
 
-        public UserStudentsController(AppDbContext context)
+        public CommentsController(AppDbContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<UserStudent>>> GetAllComments()
+        public async Task<ActionResult<List<Comment>>> GetAllComments()
         {
             return await _context.UserStudents.ToListAsync();
         }
 
         [HttpGet("{studentId}")]
-        public async Task<ActionResult<List<UserStudent>>> GetCommentsByStudentId(int studentId)
+        public async Task<ActionResult<List<Comment>>> GetCommentsByStudentId(int studentId)
         {
             var list = await _context.UserStudents.Where(x => x.StudentId == studentId).ToListAsync();
             if (list.Count == 0) return BadRequest("No comments for that student");
@@ -31,17 +31,17 @@ namespace Api.Controllers
 
         
         [HttpPost("add-comment/{studentId}")]
-        public async Task<ActionResult> AddComment(UserStudentDto userStudentDto)
+        public async Task<ActionResult> AddComment(CommentDto userStudentDto)
         {
             var student = await _context.Students.SingleOrDefaultAsync(x => x.Id == userStudentDto.studentId);
             var user = await _context.Users.SingleOrDefaultAsync(x => x.Id == userStudentDto.userId);
             
-            var comment = new UserStudent
+            var comment = new Comment
             {
               
                 StudentId = userStudentDto.studentId,
                 UserId = userStudentDto.userId,
-                Comment = userStudentDto.comment,
+                comment = userStudentDto.comment,
 
             };
 

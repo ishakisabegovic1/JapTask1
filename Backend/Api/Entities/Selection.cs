@@ -15,7 +15,7 @@ namespace Api.Entities
         public string Status { get; set; }
 
         public int JapId { get; set; }
-        public virtual JAP Jap { get; set; }
+        public virtual Program Jap { get; set; }
 
         public virtual ICollection<Student> Students{ get; set; }
 

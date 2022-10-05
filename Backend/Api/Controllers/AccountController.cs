@@ -1,7 +1,7 @@
 ﻿using Api.Data;
 using Api.DTOs;
 using Api.Entities;
-using Api.Interfaces;
+using Api.Services.Token;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Api.Controllers
 {
-    public class AccountController : BaseApiController
+  public class AccountController : BaseApiController
     {
         private readonly AppDbContext _context;
         private readonly ITokenService _tokenService;

@@ -1,10 +1,10 @@
-﻿using Api.Entities;
+using Api.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace Api.DTOs
 {
-    public class UserStudentDto
+    public class CommentDto
     {        
         public int Id { get; set; }
         public int userId { get; set; }

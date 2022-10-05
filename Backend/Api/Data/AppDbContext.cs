@@ -1,4 +1,4 @@
-﻿using Api.Entities;
+using Api.Entities;
 using Microsoft.AspNetCore.Identity;
 //using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -22,9 +22,9 @@ namespace Api.Data
 
         public DbSet<Selection> Selections { get; set; }
 
-        public DbSet<JAP> Japs  { get; set; }
+        public DbSet<Entities.Program> Japs  { get; set; }
 
-        public DbSet<UserStudent> UserStudents { get; set; }
+        public DbSet<Comment> UserStudents { get; set; }
 
 
 
@@ -51,7 +51,7 @@ namespace Api.Data
                 .WithMany(x => x.Students)
                 .HasForeignKey(x => x.SelectionId);
 
-            builder.Entity<UserStudent>()
+            builder.Entity<Comment>()
                  .HasKey(x => x.Id);
 
             builder.Entity<User>()

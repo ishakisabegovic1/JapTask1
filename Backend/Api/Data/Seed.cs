@@ -1,4 +1,4 @@
-﻿using Api.Entities;
+using Api.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
@@ -11,7 +11,7 @@ namespace Api.Data
 
             if (await context.Japs.AnyAsync()) return;
             var japData = await System.IO.File.ReadAllTextAsync("Data/DataDump/japs.json");
-            var japs = JsonSerializer.Deserialize<List<JAP>>(japData);
+            var japs = JsonSerializer.Deserialize<List<Entities.Program>>(japData);
             foreach (var jap in japs)
             {
                 context.Japs.Add(jap);
@@ -35,7 +35,7 @@ namespace Api.Data
 
             if (await context.UserStudents.AnyAsync()) return;
             var userStudentData = await System.IO.File.ReadAllTextAsync("Data/DataDump/comments.json");
-            var userStudents = JsonSerializer.Deserialize<List<UserStudent>>(userStudentData);
+            var userStudents = JsonSerializer.Deserialize<List<Comment>>(userStudentData);
             foreach (var comm in userStudents)
             {
                 context.UserStudents.Add(comm);

@@ -18,6 +18,6 @@ namespace Api.Entities
         public int SelectionId { get; set; }
         public virtual Selection? Selection { get; set; }
         
-        public virtual ICollection<UserStudent>? Comments { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; }
     }
 }

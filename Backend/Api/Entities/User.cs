@@ -14,7 +14,7 @@ namespace Api.Entities
 
         public string Password { get; set; }
 
-        public virtual ICollection<UserStudent>? Comments { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; }
 
     }
 }

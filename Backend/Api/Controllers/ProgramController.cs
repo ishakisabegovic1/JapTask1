@@ -7,23 +7,23 @@ using Microsoft.EntityFrameworkCore;
 namespace Api.Controllers
 {
 
-    public class JapController : BaseApiController
+    public class ProgramController : BaseApiController
     {
 
         private readonly AppDbContext _context;
 
-        public JapController(AppDbContext context)
+        public ProgramController(AppDbContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<JapDto>>> GetJaps()
+        public async Task<ActionResult<List<ProgramDto>>> GetJaps()
         {
 
             var japs =  _context.Japs.AsQueryable();
 
-            var lista = japs.Select(x => new JapDto
+            var lista = japs.Select(x => new ProgramDto
             {
                 Name = x.Name,
                 Id = x.Id
@@ -35,7 +35,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<JAP>> GetJapById(int id)
+        public async Task<ActionResult<Entities.Program>> GetJapById(int id)
         {
             return await _context.Japs.SingleOrDefaultAsync(x => x.Id == id);
         }
