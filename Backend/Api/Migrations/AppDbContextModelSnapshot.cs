@@ -30,6 +30,9 @@ namespace Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
@@ -52,6 +55,7 @@ namespace Api.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1199),
                             StudentId = 1,
                             UserId = 1,
                             comment = "komentar"
@@ -59,6 +63,7 @@ namespace Api.Migrations
                         new
                         {
                             Id = 2,
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1201),
                             StudentId = 2,
                             UserId = 1,
                             comment = "komentar1"
@@ -72,6 +77,9 @@ namespace Api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Curriculum")
                         .HasColumnType("nvarchar(max)");
@@ -88,21 +96,25 @@ namespace Api.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1149),
                             Name = "DEV"
                         },
                         new
                         {
                             Id = 2,
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1152),
                             Name = "QA"
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1154),
                             Name = "DevOps"
                         },
                         new
                         {
                             Id = 4,
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1155),
                             Name = "TA"
                         });
                 });
@@ -114,6 +126,9 @@ namespace Api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -142,6 +157,7 @@ namespace Api.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1167),
                             EndDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JapId = 1,
                             Name = "DEV 09/21",
@@ -151,6 +167,7 @@ namespace Api.Migrations
                         new
                         {
                             Id = 2,
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1172),
                             EndDate = new DateTime(2022, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JapId = 2,
                             Name = "QA 09/21",
@@ -169,6 +186,9 @@ namespace Api.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
@@ -195,6 +215,7 @@ namespace Api.Migrations
                         {
                             Id = 1,
                             Address = "adresica",
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1182),
                             DateOfBirth = new DateTime(1998, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Student studentic",
                             SelectionId = 1,
@@ -204,6 +225,7 @@ namespace Api.Migrations
                         {
                             Id = 2,
                             Address = "adresica 2",
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1187),
                             DateOfBirth = new DateTime(1998, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Student studentic 1",
                             SelectionId = 2,
@@ -218,6 +240,9 @@ namespace Api.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -235,6 +260,7 @@ namespace Api.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2022, 10, 6, 13, 57, 38, 974, DateTimeKind.Local).AddTicks(1020),
                             Password = "password",
                             UserName = "username"
                         });

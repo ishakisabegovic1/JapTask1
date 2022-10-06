@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Api.Entities
 {
-  public class Student
+  public class Student : BaseEntity
   {
-    public int Id { get; set; }
+    //public int Id { get; set; }
     [Required]
     public string Name { get; set; }
 
