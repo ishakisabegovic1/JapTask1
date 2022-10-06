@@ -22,7 +22,50 @@ namespace Api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Api.Entities.JAP", b =>
+            modelBuilder.Entity("Api.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            StudentId = 1,
+                            UserId = 1,
+                            comment = "komentar"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            StudentId = 2,
+                            UserId = 1,
+                            comment = "komentar1"
+                        });
+                });
+
+            modelBuilder.Entity("Api.Entities.Program", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,7 +82,29 @@ namespace Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Japs");
+                    b.ToTable("Programs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "DEV"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "QA"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "DevOps"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "TA"
+                        });
                 });
 
             modelBuilder.Entity("Api.Entities.Selection", b =>
@@ -50,7 +115,7 @@ namespace Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("JapId")
@@ -72,6 +137,26 @@ namespace Api.Migrations
                     b.HasIndex("JapId");
 
                     b.ToTable("Selections");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EndDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JapId = 1,
+                            Name = "DEV 09/21",
+                            StartDate = new DateTime(2022, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Active"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EndDate = new DateTime(2022, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JapId = 2,
+                            Name = "QA 09/21",
+                            StartDate = new DateTime(2022, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Active"
+                        });
                 });
 
             modelBuilder.Entity("Api.Entities.Student", b =>
@@ -95,7 +180,7 @@ namespace Api.Migrations
                     b.Property<int>("SelectionId")
                         .HasColumnType("int");
 
-                    b.Property<string>("StudentStatus")
+                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -104,6 +189,26 @@ namespace Api.Migrations
                     b.HasIndex("SelectionId");
 
                     b.ToTable("Students");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "adresica",
+                            DateOfBirth = new DateTime(1998, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Student studentic",
+                            SelectionId = 1,
+                            Status = "InProgress"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "adresica 2",
+                            DateOfBirth = new DateTime(1998, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Student studentic 1",
+                            SelectionId = 2,
+                            Status = "Extended"
+                        });
                 });
 
             modelBuilder.Entity("Api.Entities.User", b =>
@@ -125,38 +230,38 @@ namespace Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "password",
+                            UserName = "username"
+                        });
                 });
 
-            modelBuilder.Entity("Api.Entities.UserStudent", b =>
+            modelBuilder.Entity("Api.Entities.Comment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasOne("Api.Entities.Student", "Student")
+                        .WithMany("Comments")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.HasOne("Api.Entities.User", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Navigation("Student");
 
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserStudents");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Api.Entities.Selection", b =>
                 {
-                    b.HasOne("Api.Entities.JAP", "Jap")
+                    b.HasOne("Api.Entities.Program", "Jap")
                         .WithMany("Selections")
                         .HasForeignKey("JapId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -176,26 +281,7 @@ namespace Api.Migrations
                     b.Navigation("Selection");
                 });
 
-            modelBuilder.Entity("Api.Entities.UserStudent", b =>
-                {
-                    b.HasOne("Api.Entities.Student", "Student")
-                        .WithMany("Comments")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Api.Entities.User", "User")
-                        .WithMany("Comments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Student");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Api.Entities.JAP", b =>
+            modelBuilder.Entity("Api.Entities.Program", b =>
                 {
                     b.Navigation("Selections");
                 });
