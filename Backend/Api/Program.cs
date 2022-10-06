@@ -2,7 +2,7 @@ using Api.Data;
 using Api.Entities;
 using Api.Extensions;
 using Api.Helpers;
-using Api.Interfaces;
+
 using Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -11,10 +11,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-
 
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddControllers();
@@ -48,7 +44,7 @@ try
 {
   var context = services.GetRequiredService<AppDbContext>();
   await context.Database.MigrateAsync();
-  await Seed.SeedData(context);
+  //await Seed.SeedData(context);
 }
 catch (Exception ex)
 {
