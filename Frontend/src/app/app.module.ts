@@ -17,6 +17,8 @@ import { SelectioneditComponent } from './selectionedit/selectionedit.component'
 import { StudentaddComponent } from './studentadd/studentadd.component';
 import { SelectionaddComponent } from './selectionadd/selectionadd.component';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directives/has-role.directive';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
     StudenteditComponent,
     SelectioneditComponent,
     StudentaddComponent,
-    SelectionaddComponent,    
+    SelectionaddComponent,
+    AdminPanelComponent,
+    HasRoleDirective,    
     
   ],
   imports: [

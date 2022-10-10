@@ -11,7 +11,7 @@
 <li class="list-group-item" *ngIf="selection"><strong>Selection Status: </strong>{{selection.status}}</li>
 <li class="list-group-item" *ngIf="selection"><strong>Start date: </strong>{{selection.startDate | date:"MMM d, y"}}</li>
 <li class="list-group-item" *ngIf="selection"><strong>End date: </strong> {{selection.endDate | date:"MMM d, y"}}</li>
-<li class="list-group-item" *ngIf="student"><strong>Student Status: </strong>{{student.studentStatus}}</li>
+<li class="list-group-item" *ngIf="student"><strong>Student Status: </strong>{{student.status}}</li>
 
 </ul>
 
@@ -56,8 +56,8 @@
     </tbody>
   </table>
 
-<input [(ngModel)]="newComment.comment" type="text" />
-  <button class="btn btn-primary mx-2 my-4" (click)="addComment(student.id)" >Add new comment</button>
+<input *appHasRole="'Admin'" [(ngModel)]="newComment.comment" type="text" />
+  <button *appHasRole="'Admin'" class="btn btn-primary mx-2 my-4" (click)="addComment(student.id)" >Add new comment</button>
 </div>
 </div>
 

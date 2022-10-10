@@ -22,4 +22,8 @@ export class AppComponent {
       
     }
   }
+
+  isStudent(): boolean{
+    return this.accountService.isStudent;
+  }
 }

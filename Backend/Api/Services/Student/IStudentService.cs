@@ -9,8 +9,10 @@ namespace Api.Services.Student
     Task<List<StudentDto>> GetStudentsAsync([FromQuery] StudentParams userParams);
     Task<StudentDto> GetStudentById(int id);
     Task<List<StudentDto>> GetStudentsBySelectionId(int id);
-    Task<StudentDto> AddStudent(StudentDto studentDto);
-    Task<StudentDto> EditStudent(StudentDto studentDto);
+    Task<StudentUpdateDto> AddStudent(StudentUpdateDto studentDto);
+    Task<StudentUpdateDto> EditStudent(StudentUpdateDto studentDto);
     Task<StudentDto> DeleteStudent(int id);
+
+    Task<int> GetStudentIdByUserId(int userId);
   }
 }

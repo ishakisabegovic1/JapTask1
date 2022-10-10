@@ -12,5 +12,7 @@ namespace Api.Repositories.Student
 
     Task<List<StudentDto>> GetStudentsBySelectionId(int id);
 
+    Task<int> GetStudentIdFromUser(int userId);
+
   }
 }

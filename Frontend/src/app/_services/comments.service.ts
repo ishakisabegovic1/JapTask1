@@ -12,19 +12,19 @@ export class CommentsService {
   constructor(private http: HttpClient) { }
 
   getComments() {
-    return this.http.get<UserStudent[]>(this.baseUrl+'UserStudents');
+    return this.http.get<UserStudent[]>(this.baseUrl+'Comments');
   }
 
   getCommentsById(id: number){
-    return this.http.get<UserStudent[]>(this.baseUrl+'UserStudents/'+id);
+    return this.http.get<UserStudent[]>(this.baseUrl+'Comments/'+id);
   }
 
   addNewComment(comment:Comment){
     console.log(comment);
-    return this.http.post<Comment>(this.baseUrl + 'UserStudents/add-comment/'+comment.studentId, comment);
+    return this.http.post<Comment>(this.baseUrl + 'Comments/add-comment/'+comment.studentId, comment);
   }
 
   deleteComment(id:number){
-    return this.http.delete<Comment>(this.baseUrl+ 'UserStudents/delete-comment/'+id);
+    return this.http.delete<Comment>(this.baseUrl+ 'Comments/delete-comment/'+id);
   }
 }

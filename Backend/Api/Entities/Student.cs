@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Api.Entities
 {
-  public class Student
+  public class Student : BaseEntity
   {
-    public int Id { get; set; }
+    //public int Id { get; set; }
     [Required]
     public string Name { get; set; }
 
@@ -17,6 +17,8 @@ namespace Api.Entities
 
     public int SelectionId { get; set; }
     public virtual Selection? Selection { get; set; }
+    public int UserId { get; set; }
+    public virtual User User { get; set; }
 
     public virtual ICollection<Comment>? Comments { get; set; }
   }

@@ -20,20 +20,30 @@ namespace Api.Repositories.Student
 
     public async Task<StudentDto> GetStudentById(int id)
     {
-      var student = await _context.Students.Include(m => m.Selection).SingleOrDefaultAsync(x => x.Id == id);
+      var student = await _context.Students.Include(m => m.Selection).Include(x => x.User).SingleOrDefaultAsync(x => x.Id == id);
 
       if (student == null) return null;
 
-      var studentDto = new StudentDto();
+      //var studentDto = new StudentDto();
 
-      studentDto = _mapper.Map<StudentDto>(student);
+      var studentDto = _mapper.Map<StudentDto>(student);
 
       return studentDto;
     }
 
+    public async Task<int> GetStudentIdFromUser(int userId)
+    {
+      var student = await _context.Students.FirstOrDefaultAsync(x => x.UserId == userId);
+
+      var studentId = student.Id;
+
+      return studentId;
+    }
+
     public async Task<List<StudentDto>> GetStudentsAsync([FromQuery] StudentParams userParams)
     {
-      var query = _context.Students.Include(m => m.Selection).AsNoTracking().AsQueryable();
+      var query = _context.Students.Include(m => m.Selection).Include(x => x.User).AsNoTracking().AsQueryable();
+
       if (userParams.nameFilter != null || userParams.statusFilter != null || userParams.selectionFilter != null)
       {
         query = query

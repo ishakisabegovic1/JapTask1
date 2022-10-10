@@ -1,4 +1,5 @@
 using Api.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
@@ -6,44 +7,44 @@ namespace Api.Data
 {
   public class Seed
   {
-    public static async Task SeedData(AppDbContext context)
+    public static async Task SeedData(AppDbContext context, UserManager<User> userManager, RoleManager<Role> roleManager)
     {
 
-      if (await context.Programs.AnyAsync()) return;
-      var japData = await System.IO.File.ReadAllTextAsync("Data/DataDump/japs.json");
-      var japs = JsonSerializer.Deserialize<List<Entities.Program>>(japData);
-      foreach (var jap in japs)
+      var roles = new List<Role>
       {
-        context.Programs.Add(jap);
+        new Role{Name = "Admin"},
+        new Role{Name="Student"}
+      };
+
+      foreach (var role in roles)
+      {
+        await roleManager.CreateAsync(role);
       }
 
-      if (await context.Selections.AnyAsync()) return;
-      var selectionData = await System.IO.File.ReadAllTextAsync("Data/DataDump/selections.json");
-      var selections = JsonSerializer.Deserialize<List<Selection>>(selectionData);
-      foreach (var sel in selections)
+      var user = new User
       {
-        context.Selections.Add(sel);
-      }
+        Id = 1,
+        UserName = "admin"
+      };
 
-      if (await context.Students.AnyAsync()) return;
-      var studentData = await System.IO.File.ReadAllTextAsync("Data/DataDump/students.json");
-      var students = JsonSerializer.Deserialize<List<Student>>(studentData);
-      foreach (var stud in students)
+      var admin = new Admin
       {
-        context.Students.Add(stud);
-      }
+        Id = 1,
+        UserId = 1
+      };
 
-      if (await context.Comments.AnyAsync()) return;
-      var userStudentData = await System.IO.File.ReadAllTextAsync("Data/DataDump/comments.json");
-      var userStudents = JsonSerializer.Deserialize<List<Comment>>(userStudentData);
-      foreach (var comm in userStudents)
+      var rola = new UserRole
       {
-        context.Comments.Add(comm);
-      }
+        UserId = 1,
+        RoleId = 1
+      };
 
+      await userManager.CreateAsync(user, "Password1");
 
+      await userManager.AddToRoleAsync(user, "Admin");
+
+      context.Admins.Add(admin);
       await context.SaveChangesAsync();
-
 
     }
   }

@@ -3,7 +3,7 @@ export class StudentClass{
     name: string
     dateOfBirth: Date
     address: string
-    studentStatus: string
+    status: string
     selectionId: number
    selection:string
 }
