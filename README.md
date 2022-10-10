@@ -11,7 +11,7 @@ username : 'Admin'
 password 'Password1' 
 and navigate to pages. You can add, edit or delete selections and students, and you can add or delete comments for students in student details.
 When you add student, you can login with credentials: 
-username: student name in lowercase with no whitespaces
+username: student name in lowercase with no whitespaces and
 password: Student1
 
 
