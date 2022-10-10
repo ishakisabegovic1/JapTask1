@@ -34,11 +34,11 @@
         <th scope="row"></th>
         <td>{{student.name}}</td>
         <td>{{student.selection}}</td>
-        <td>{{student.studentStatus}}</td>
+        <td>{{student.status}}</td>
         <td>
             <button routerLink="/student/{{student.id}}" class="btn btn-sm btn-primary mr-2">Details</button>
-            <button routerLink="/student/edit/{{student.id}}"  class="btn btn-sm btn-primary mr-2">Edit</button>
-            <button class="btn btn-sm btn-primary mr-2" (click)="deleteStudent(student.id)">Delete</button>
+            <button *appHasRole="'Admin'" routerLink="/student/edit/{{student.id}}"  class="btn btn-sm btn-primary mr-2">Edit</button>
+            <button *appHasRole="'Admin'" class="btn btn-sm btn-primary mr-2" (click)="deleteStudent(student.id)">Delete</button>
 
         
         </td>
@@ -67,5 +67,5 @@
     </pagination>
 
   </div>
-  <button routerLink="/students/add" class="btn btn-primary mx-2 my-2">Add new student</button>
+  <button *appHasRole="'Admin'" routerLink="/students/add" class="btn btn-primary mx-2 my-2">Add new student</button>
   <i class="bi bi-filter-circle"></i>

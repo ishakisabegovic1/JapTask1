@@ -13,7 +13,10 @@ namespace Api.Helpers
       CreateMap<Student, StudentDto>()
           .ForMember(dest => dest.Selection, src => src.MapFrom(m => m.Selection.Name));
 
-      CreateMap<StudentDto, Student>().ForMember(dest => dest.Selection, src => src.MapFrom(x => 0));
+      CreateMap<StudentDto, Student>().ForMember(dest => dest.Selection, src => src.MapFrom(x => ""));
+
+      CreateMap<StudentUpdateDto, Student>();
+      CreateMap<Student, StudentUpdateDto>();
 
       CreateMap<Selection, SelectionDto>()
           .ForMember(dest => dest.Jap, opt => opt.MapFrom(src => src.Jap.Name));
@@ -27,6 +30,8 @@ namespace Api.Helpers
 
 
       CreateMap<SelectionDto, Selection>();
+
+      CreateMap<LoginDto, User>();
     }
 
   }

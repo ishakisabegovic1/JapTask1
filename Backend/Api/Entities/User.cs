@@ -4,17 +4,16 @@ using System.Collections.Generic;
 
 namespace Api.Entities
 {
-  public class User : BaseEntity
+  public class User : IdentityUser<int>
   {
-    //public int Id { get; set; }
+    //public string UserName { get; set; }
 
-    //public byte[] PasswordHash { get; set; }
-    //public byte[] PasswordSalt { get; set; }
-    public string UserName { get; set; }
+    //public string Password { get; set; }
 
-    public string Password { get; set; }
+    //public virtual ICollection<Comment>? Comments { get; set; }
+    public ICollection<UserRole> UserRoles { get; set; }
 
-    public virtual ICollection<Comment>? Comments { get; set; }
-
+    public Student? Student { get; set; }
+    public Admin? Admin { get; set; }
   }
 }

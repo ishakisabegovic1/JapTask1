@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pagination } from '../_models/Pagination';
 import { Student } from '../_models/Student';
 import { StudentParams } from '../_models/StudentParams';
+import { AccountService } from '../_services/account.service';
 import { StudentsService } from '../_services/students.service';
-
-
+import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
+import { User } from '../_models/user';
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -20,14 +23,26 @@ export class StudentsComponent implements OnInit {
   pagination: Pagination;
   pageNumber = 1;
   pageSize = 5;
-
-  constructor(private studentService: StudentsService) {
+  studentid: Number;
+  constructor(private studentService: StudentsService, private accountService: AccountService, private route:Router) {
     
    }
 
   ngOnInit(): void {
     
     this.loadStudents();
+    if(this.accountService.isStudent) {
+      
+      this.accountService.currentUser$.pipe(
+        map((response:User)=>
+        {
+          this.studentid = response.studentId;
+        })
+
+        
+      )
+      this.route.navigateByUrl(environment.apiUrl+'/Student/'+ this.studentid);
+    }
   }
 
   loadStudents(){

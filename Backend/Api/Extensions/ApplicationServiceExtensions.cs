@@ -5,6 +5,7 @@ using Api.Repositories.Program;
 using Api.Repositories.Selection;
 using Api.Repositories.Student;
 using Api.Services.Comment;
+using Api.Services.Email;
 using Api.Services.Program;
 using Api.Services.Selection;
 using Api.Services.Student;
@@ -31,9 +32,14 @@ namespace Api.Extensions
       services.AddScoped<ICommentRepository, CommentRepository>();
       services.AddScoped<ICommentService, CommentService>();
 
+      services.AddScoped<IEmailService, EmailService>();
+
       services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+
       services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
           config.GetConnectionString("DefaultConnection")));
+
+
       return services;
     }
 

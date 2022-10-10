@@ -14,6 +14,6 @@ export class JapsService {
   constructor(private http: HttpClient) { }
 
   getJaps() {
-    return this.http.get<Jap[]>(this.baseUrl+'Jap');
+    return this.http.get<Jap[]>(this.baseUrl+'Programs');
   }
 }

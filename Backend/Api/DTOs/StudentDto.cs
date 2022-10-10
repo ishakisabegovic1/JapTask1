@@ -19,6 +19,6 @@ namespace Api.DTOs
 
     public string Selection { get; set; }
 
-
+    public int UserId { get; set; }
   }
 }

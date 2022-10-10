@@ -11,19 +11,23 @@ import { StudenteditComponent } from './studentedit/studentedit.component';
 import { SelectioneditComponent } from './selectionedit/selectionedit.component';
 import { StudentaddComponent } from './studentadd/studentadd.component';
 import { SelectionaddComponent } from './selectionadd/selectionadd.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { AdminGuard } from './_guards/admin.guard';
+import { StudentGuard } from './_guards/student.guard';
 
 
 const routes : Routes = [
   {path:'login', component:LoginComponent},
-  {path:'japs', component: JapsComponent},
+  {path:'japs', component: JapsComponent, canActivate:[AdminGuard]},
   {path:'students', component: StudentsComponent},
   {path:'student/:id', component: StudentdetailsComponent},
-  {path:'student/edit/:id', component: StudenteditComponent},  
-  {path:'students/add', component: StudentaddComponent},  
-  {path:'selections', component: SelectionsComponent},
-  {path:'selection/:id', component: SelectiondetailsComponent},
-  {path:'selection/edit/:id', component: SelectioneditComponent},
-  {path:'selections/add', component:SelectionaddComponent}
+  {path:'student/edit/:id', component: StudenteditComponent, canActivate:[AdminGuard]},  
+  {path:'students/add', component: StudentaddComponent, canActivate:[AdminGuard]},  
+  {path:'selections', component: SelectionsComponent, canActivate:[AdminGuard]},
+  {path:'selection/:id', component: SelectiondetailsComponent, canActivate:[AdminGuard]},
+  {path:'selection/edit/:id', component: SelectioneditComponent, canActivate:[AdminGuard]},
+  {path:'selections/add', component:SelectionaddComponent, canActivate:[AdminGuard]},
+  {path:'admin', component:AdminPanelComponent, canActivate:[AdminGuard]},
   
  // {path:'**', component: LoginComponent, pathMatch: 'full'}
 

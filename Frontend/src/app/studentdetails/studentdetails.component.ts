@@ -63,7 +63,7 @@ export class StudentdetailsComponent implements OnInit {
     addComment(id:number){
       if(this.newComment.comment != ""){
       this.newComment.studentId = this.student.id;
-      this.newComment.userId = 1;
+      this.newComment.adminId = 3;
         this.commentService.addNewComment(this.newComment).subscribe(()=>{
           console.log(this.newComment);
         }, error=>console.log(error));

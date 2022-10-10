@@ -19,7 +19,7 @@ namespace Api.Services.Comment
       var comment = new Entities.Comment
       {
         StudentId = commentDto.studentId,
-        UserId = commentDto.userId,
+        AdminId = commentDto.adminId,
         comment = commentDto.comment,
       };
       var addedComment = await _commentRepository.Add(comment);
