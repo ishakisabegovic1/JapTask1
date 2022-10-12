@@ -19,6 +19,7 @@ import { SelectionaddComponent } from './selectionadd/selectionadd.component';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { HasRoleDirective } from './_directives/has-role.directive';
+import { AdminreportComponent } from './adminreport/adminreport.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { HasRoleDirective } from './_directives/has-role.directive';
     StudentaddComponent,
     SelectionaddComponent,
     AdminPanelComponent,
-    HasRoleDirective,    
+    HasRoleDirective,
+    AdminreportComponent,    
     
   ],
   imports: [

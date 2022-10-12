@@ -1,3 +1,4 @@
+using Api.DTOs;
 using Api.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -29,11 +30,16 @@ namespace Api.Data
     public DbSet<Comment> Comments { get; set; }
 
     public DbSet<Admin> Admins { get; set; }
+    public DbSet<AdminReportDto> AdminReports { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
 
       base.OnModelCreating(builder);
+
+      builder.Entity<AdminReportDto>()
+        .ToTable("AdminReports", x => x.ExcludeFromMigrations())
+        .HasNoKey();
 
       builder.Entity<User>()
         .HasMany(ur => ur.UserRoles)
