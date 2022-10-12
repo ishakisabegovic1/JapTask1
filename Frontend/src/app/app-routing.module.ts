@@ -14,6 +14,7 @@ import { SelectionaddComponent } from './selectionadd/selectionadd.component';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { StudentGuard } from './_guards/student.guard';
+import { AdminreportComponent } from './adminreport/adminreport.component';
 
 
 const routes : Routes = [
@@ -27,7 +28,7 @@ const routes : Routes = [
   {path:'selection/:id', component: SelectiondetailsComponent, canActivate:[AdminGuard]},
   {path:'selection/edit/:id', component: SelectioneditComponent, canActivate:[AdminGuard]},
   {path:'selections/add', component:SelectionaddComponent, canActivate:[AdminGuard]},
-  {path:'admin', component:AdminPanelComponent, canActivate:[AdminGuard]},
+  {path:'adminreport', component:AdminreportComponent, canActivate:[AdminGuard]},
   
  // {path:'**', component: LoginComponent, pathMatch: 'full'}
 

@@ -4,6 +4,7 @@ using Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221011104121_updateData")]
+    partial class updateData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,28 +23,6 @@ namespace Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Api.DTOs.AdminReportDto", b =>
-                {
-                    b.Property<string>("ProgramName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SelectionName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SuccessRate")
-                        .HasColumnType("int");
-
-                    b.Property<int>("numberOfInProgress")
-                        .HasColumnType("int");
-
-                    b.Property<int>("numberOfStudents")
-                        .HasColumnType("int");
-
-                    b.ToTable("AdminReports", null, t => t.ExcludeFromMigrations());
-                });
 
             modelBuilder.Entity("Api.Entities.Admin", b =>
                 {
@@ -100,7 +80,7 @@ namespace Api.Migrations
                         {
                             Id = 1,
                             AdminId = 1,
-                            CreatedAt = new DateTime(2022, 10, 11, 15, 16, 33, 715, DateTimeKind.Local).AddTicks(8419),
+                            CreatedAt = new DateTime(2022, 10, 11, 12, 41, 21, 52, DateTimeKind.Local).AddTicks(4019),
                             StudentId = 1,
                             comment = "komentar"
                         },
@@ -108,7 +88,7 @@ namespace Api.Migrations
                         {
                             Id = 2,
                             AdminId = 1,
-                            CreatedAt = new DateTime(2022, 10, 11, 15, 16, 33, 715, DateTimeKind.Local).AddTicks(8422),
+                            CreatedAt = new DateTime(2022, 10, 11, 12, 41, 21, 52, DateTimeKind.Local).AddTicks(4022),
                             StudentId = 2,
                             comment = "komentar1"
                         });
@@ -140,25 +120,25 @@ namespace Api.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2022, 10, 11, 15, 16, 33, 715, DateTimeKind.Local).AddTicks(8251),
+                            CreatedAt = new DateTime(2022, 10, 11, 12, 41, 21, 52, DateTimeKind.Local).AddTicks(3768),
                             Name = "DEV"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2022, 10, 11, 15, 16, 33, 715, DateTimeKind.Local).AddTicks(8285),
+                            CreatedAt = new DateTime(2022, 10, 11, 12, 41, 21, 52, DateTimeKind.Local).AddTicks(3801),
                             Name = "QA"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2022, 10, 11, 15, 16, 33, 715, DateTimeKind.Local).AddTicks(8286),
+                            CreatedAt = new DateTime(2022, 10, 11, 12, 41, 21, 52, DateTimeKind.Local).AddTicks(3803),
                             Name = "DevOps"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2022, 10, 11, 15, 16, 33, 715, DateTimeKind.Local).AddTicks(8288),
+                            CreatedAt = new DateTime(2022, 10, 11, 12, 41, 21, 52, DateTimeKind.Local).AddTicks(3804),
                             Name = "TA"
                         });
                 });
@@ -231,7 +211,7 @@ namespace Api.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2022, 10, 11, 15, 16, 33, 715, DateTimeKind.Local).AddTicks(8403),
+                            CreatedAt = new DateTime(2022, 10, 11, 12, 41, 21, 52, DateTimeKind.Local).AddTicks(4004),
                             EndDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JapId = 1,
                             Name = "DEV 09/21",
@@ -241,7 +221,7 @@ namespace Api.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2022, 10, 11, 15, 16, 33, 715, DateTimeKind.Local).AddTicks(8408),
+                            CreatedAt = new DateTime(2022, 10, 11, 12, 41, 21, 52, DateTimeKind.Local).AddTicks(4009),
                             EndDate = new DateTime(2022, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             JapId = 2,
                             Name = "QA 09/21",
