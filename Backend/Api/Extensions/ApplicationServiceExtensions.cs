@@ -1,15 +1,10 @@
-using Api.Data;
-using Api.Helpers;
-using Api.Repositories.Comment;
-using Api.Repositories.Program;
-using Api.Repositories.Selection;
-using Api.Repositories.Student;
-using Api.Services.Comment;
-using Api.Services.Email;
-using Api.Services.Program;
-using Api.Services.Selection;
-using Api.Services.Student;
-using Api.Services.Token;
+
+using JAP.Core;
+using JAP.Core.Interfaces;
+using JAP.Core.MapperProfiles;
+using JAP.Database;
+using JAP.Repositories;
+using JAP.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Extensions
@@ -31,6 +26,8 @@ namespace Api.Extensions
 
       services.AddScoped<ICommentRepository, CommentRepository>();
       services.AddScoped<ICommentService, CommentService>();
+
+      services.AddScoped<IAuthService, AuthService>();
 
       services.AddScoped<IEmailService, EmailService>();
 

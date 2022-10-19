@@ -1,11 +1,8 @@
-using Api.Data;
-using Api.DTOs;
-using Api.Entities;
-using Api.Services.Comment;
-using Api.Services.Student;
+
 using AutoMapper;
+using JAP.Core;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace Api.Controllers
 {

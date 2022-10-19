@@ -1,17 +1,8 @@
-using Api.Data;
-using Api.DTOs;
-using Api.Entities;
+
 using Api.Extensions;
-using Api.Helpers;
-using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
+using JAP.Common;
+using JAP.Core;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Net;
-using System.Linq;
-using System.Xml.Linq;
-using Api.Services.Student;
-using Api.Services.Email;
 
 namespace Api.Controllers
 {

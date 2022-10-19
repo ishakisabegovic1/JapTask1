@@ -20,17 +20,18 @@ import { AdminreportComponent } from './adminreport/adminreport.component';
 const routes : Routes = [
   {path:'login', component:LoginComponent},
   {path:'japs', component: JapsComponent, canActivate:[AdminGuard]},
-  {path:'students', component: StudentsComponent},
-  {path:'student/:id', component: StudentdetailsComponent},
-  {path:'student/edit/:id', component: StudenteditComponent, canActivate:[AdminGuard]},  
-  {path:'students/add', component: StudentaddComponent, canActivate:[AdminGuard]},  
+  {path:'students', component: StudentsComponent, canActivate:[AdminGuard]},
+  {path:'student/:id', component: StudentdetailsComponent, canActivate:[AdminGuard]},
+  {path:'stud/profile', component: StudentdetailsComponent, canActivate:[StudentGuard]},
+  {path:'student/edit/:id', component: StudenteditComponent, canActivate:[AdminGuard]},
+  {path:'students/add', component: StudentaddComponent, canActivate:[AdminGuard]},
   {path:'selections', component: SelectionsComponent, canActivate:[AdminGuard]},
   {path:'selection/:id', component: SelectiondetailsComponent, canActivate:[AdminGuard]},
   {path:'selection/edit/:id', component: SelectioneditComponent, canActivate:[AdminGuard]},
   {path:'selections/add', component:SelectionaddComponent, canActivate:[AdminGuard]},
   {path:'adminreport', component:AdminreportComponent, canActivate:[AdminGuard]},
-  
- // {path:'**', component: LoginComponent, pathMatch: 'full'}
+
+
 
 ];
 
@@ -38,6 +39,6 @@ const routes : Routes = [
   declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports:[RouterModule]
-  
+
 })
 export class AppRoutingModule { }
