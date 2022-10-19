@@ -1,45 +1,45 @@
 <div *ngIf="accountService.currentUser$ | async">
 <div class="d-flex flex-column p-3  bg-light" style="width: 280px;">
-    
-  
+
+
     <ul class="nav nav-pills nav-fill flex-column align-items-center">
 
       <li class="nav-item" style="margin:1em;"><a class="nav-link">
-     
-        
+
+
       </a></li>
       <li *appHasRole="'Admin'" class="nav-item"  style="margin:1em;">
         <a class="nav-link" routerLink='/selections' routerLinkActive='active'>
-          
+
           Selections
         </a>
       </li>
-      <li  class="nav-item" style="margin:1em;">
+      <li *appHasRole="'Admin'"  class="nav-item" style="margin:1em;">
         <a class="nav-link" routerLink='/students' routerLinkActive='active'>
-         
+
           Students
         </a>
       </li>
       <li *appHasRole="'Admin'" class="nav-item" style="margin:1em;">
         <a class="nav-link" routerLink='/japs' routerLinkActive='active'>
-          
+
           Programs
         </a>
       </li>
 
       <li *appHasRole="'Admin'" class="nav-item" style="margin:1em;">
         <a class="nav-link" routerLink='/adminreport' routerLinkActive='active'>
-          
+
           Admin Report
         </a>
       </li>
-      
+
     </ul>
- 
+
     <hr style="height:150px">
     <button class="btn btn-secondary mt-5 mb-5"(click)="logout()">
       Logout
     </button>
   </div>
-  
+
 </div>

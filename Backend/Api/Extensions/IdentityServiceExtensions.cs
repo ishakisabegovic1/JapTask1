@@ -1,5 +1,6 @@
 using Api.Data;
-using Api.Entities;
+using JAP.Core;
+using JAP.Database;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;

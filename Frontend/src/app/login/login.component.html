@@ -11,25 +11,25 @@
               <form #loginForm="ngForm" (ngSubmit)="login()">
                 <div class="form-floating mb-3">
                     <label>Username</label>
-                  <input 
+                  <input
                   name="username"
                   [(ngModel)]="model.username"
                   type="text" class="form-control"  placeholder="username">
-                  
+
                 </div>
                 <div class="form-floating mb-3">
                     <label>Password</label>
-                  <input 
+                  <input
                   name="password"
                   [(ngModel)]="model.password"
-                   type="text" class="form-control" placeholder="Password">
-                  
+                   type="password" class="form-control" placeholder="Password">
+
                 </div>
-  
+
                 <div class="d-grid">
                   <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Login
                     </button>
-                </div>    
+                </div>
 
               </form>
             </div>

@@ -1,7 +1,8 @@
-using Api.Entities;
+
+using JAP.Core;
+using JAP.Database;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Text.Json;
+
 
 namespace Api.Data
 {

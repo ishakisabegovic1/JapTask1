@@ -1,15 +1,12 @@
-using Api.Data;
-using Api.DTOs;
-using Api.Entities;
-using Api.Extensions;
-using Api.Helpers;
-using Api.Services.Selection;
-using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.Xml;
 
-namespace Api.Controllers
+using Api.Controllers;
+using Api.Extensions;
+using JAP.Common;
+using JAP.Core;
+using Microsoft.AspNetCore.Mvc;
+
+
+namespace JAP.Api.Controllers
 {
   public class SelectionsController : BaseApiController
   {
@@ -46,7 +43,6 @@ namespace Api.Controllers
     [HttpPost("add-selection")]
     public async Task<ActionResult> AddSelection(SelectionDto selectionDto)
     {
-
       if (!ValidateStatus(selectionDto.Status))
         return BadRequest("Invalid status");
 
@@ -59,8 +55,6 @@ namespace Api.Controllers
     [HttpPut("edit-selection/{id}")]
     public async Task<ActionResult> EditSelection(SelectionDto selectionDto)
     {
-      //var selection = await _context.Selections.SingleOrDefaultAsync(x => x.Id == selectionDto.Id);
-
       if (!ValidateStatus(selectionDto.Status))
         return BadRequest("Invalid selection status");
 
@@ -68,7 +62,6 @@ namespace Api.Controllers
       if (selection == null) return NotFound();
 
       return Ok();
-
     }
 
     private bool ValidateStatus(string status)

@@ -31,13 +31,17 @@ export class StudentsComponent implements OnInit {
   ngOnInit(): void {
     
     this.loadStudents();
+    
     if(this.accountService.isStudent) {
       
       this.accountService.currentUser$.pipe(
         map((response:User)=>
         {
           this.studentid = response.studentId;
+          console.log(this.studentid);
         })
+
+        
 
         
       )
@@ -46,6 +50,7 @@ export class StudentsComponent implements OnInit {
   }
 
   loadStudents(){
+    
     this.studentService.getStudents(this.pageNumber, this.pageSize, this.nameFilter, this.selectionFilter,this.statusFilter, this.orderby).subscribe(response => {
       console.log(response.result);
       this.students = response.result;

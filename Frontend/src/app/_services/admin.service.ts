@@ -11,7 +11,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getAdminReport(){
-    return this.http.get<AdminReport[]>(this.baseUrl+'Admin');
+    return this.http.get<AdminReport[]>(this.baseUrl+'AdminReport');
   }
 
 }

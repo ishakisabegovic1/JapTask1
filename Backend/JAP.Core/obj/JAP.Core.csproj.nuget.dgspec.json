@@ -1,0 +1,158 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Core\\JAP.Core.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Common\\JAP.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Common\\JAP.Common.csproj",
+        "projectName": "JAP.Common",
+        "projectPath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Common\\JAP.Common.csproj",
+        "packagesPath": "C:\\Users\\IshakIsabegovic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\IshakIsabegovic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Core\\JAP.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Core\\JAP.Core.csproj",
+        "projectName": "JAP.Core",
+        "projectPath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Core\\JAP.Core.csproj",
+        "packagesPath": "C:\\Users\\IshakIsabegovic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\IshakIsabegovic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Common\\JAP.Common.csproj": {
+                "projectPath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\JAP.Common\\JAP.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.28.1, )"
+            },
+            "SendGrid.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

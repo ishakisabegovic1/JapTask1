@@ -15,7 +15,7 @@
 
 </ul>
 
-<button class="btn btn-secondary mx-2 my-4" routerLink="/students">Back</button>
+<button *appHasRole="'Admin'" class="btn btn-secondary mx-2 my-4" routerLink="/students">Back</button>
 </div>
 </div>
 <div class="card shadow col mt-4">
@@ -24,12 +24,12 @@
   <table class="table table-hover mr-5 mt-3">
     <thead>
       <tr>
-        
+
         <th scope="col">
             Comments
         </th>
-        
-        
+
+
         <th scope="col">
             Actions
         </th>
@@ -37,22 +37,22 @@
       </tr>
     </thead>
     <tbody>
-    
+
 
     <tr *ngFor="let comment of comments" >
-        
-        <td>{{comment.comment}}</td>
-      
-        
-        <td>
-            
-            <button class="btn btn-large btn-primary mr-2" (click)="deleteComment(comment.id)">Delete</button>
 
-        
+        <td>{{comment.comment}}</td>
+
+
+        <td>
+
+            <button *appHasRole="'Admin'" class="btn btn-large btn-primary mr-2" (click)="deleteComment(comment.id)">Delete</button>
+
+
         </td>
       </tr>
-     
-      
+
+
     </tbody>
   </table>
 

@@ -1,15 +1,15 @@
 
 
 <body>
-    
-    <app-login *ngIf="(accountService.currentUser$ | async) === null"></app-login>
-    <div style="display:flex" *ngIf="accountService.currentUser$ | async">
+
+    <!-- <app-login *ngIf="(accountService.currentUser$ | async) === null"></app-login> -->
+    <div style="display:flex" >
 
     <app-nav></app-nav>
     <div class="col">
-    
+
     <router-outlet></router-outlet>
     </div>
 
-    </div>   
+    </div>
 </body>

@@ -16,15 +16,14 @@ export class AccountService {
  private currentUserSource = new ReplaySubject<User>(1);
  currentUser$ = this.currentUserSource.asObservable();
  role: string;
+ id: number;
  isStudent:boolean;
  isAdmin:boolean;
   constructor(private http: HttpClient, private route: Router){
-
-
    }
 
    login(model:any){
-    return this.http.post(this.baseUrl + 'account/login', model).pipe(
+    return this.http.post(this.baseUrl + 'Auth/login', model).pipe(
       map((response: User) => {
         const user = response;
         if(user) {
@@ -32,21 +31,15 @@ export class AccountService {
           this.currentUserSource.next(user);
           console.log(user);
           this.role = user.roles;
-
-          if(this.role.includes("Student")){
-            this.isStudent = true;
-            
-       
-          } 
-          if(this.role.includes("Admin")) this.isAdmin = true;
-          
+          this.id = user.studentId;
+          return response;
         }
       })
     );
    }
 
    setCurrentUser(user: User){
-    
+
     this.currentUserSource.next(user);
    }
 
@@ -56,6 +49,7 @@ export class AccountService {
     this.role="";
     this.isStudent =false;
     this.isAdmin=false;
+    this.route.navigateByUrl('login');
    }
 
   }

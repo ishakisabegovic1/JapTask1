@@ -1,8 +1,6 @@
-using Api.Data;
-using Api.DTOs;
-using Api.Entities;
-using Api.Services.Program;
+
 using AutoMapper;
+using JAP.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,7 +1,7 @@
 <table class="table table-hover mr-5">
     <thead>
       <tr>
-        
+
         <th scope="col">
            Selection name
           </th>
@@ -14,22 +14,27 @@
            <th scope="col">
             Success rate
            </th>
+
       </tr>
     </thead>
     <tbody>
     <tr>
-       
+
 
     <tr *ngFor="let r of report" >
-        
+
         <td>{{r.selName}}</td>
         <td>{{r.prName}}</td>
-        
+
         <td>{{r.numberOfStudents}}</td>
         <td>{{r.successRate}} %</td>
-        
+
       </tr>
-     
-      
+
     </tbody>
+
+    <tr>
+
+      <td><strong>Overall Success:</strong>  {{this.overall}} %</td>
+    </tr>
   </table>

@@ -1,16 +1,11 @@
 using Api.Data;
-using Api.Entities;
 using Api.Extensions;
-using Api.Helpers;
 
-using Api.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using SendGrid;
-using SendGrid.Helpers.Mail;
+
+using JAP.Database;
+using JAP.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
