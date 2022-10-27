@@ -9,6 +9,7 @@ import { CommentsService } from '../_services/comments.service';
 import { Comment } from '../_models/Comment';
 import { UserStudent } from '../_models/UserStudent';
 import { HasRoleDirective } from '../_directives/has-role.directive';
+import { StudentItem } from '../_models/StudentItem';
 
 @Component({
   selector: 'app-studentdetails',
@@ -23,6 +24,7 @@ export class StudentdetailsComponent implements OnInit {
   jap: string;
   newComment = new Comment();
   comments:UserStudent[];
+  studentItems: StudentItem[];
 
   private sub:any;
 
@@ -45,9 +47,10 @@ export class StudentdetailsComponent implements OnInit {
       this.sub = this.route.params.subscribe(params=> {
         this.id = +params['id'];
       });
-
+// popraviti
         if(this.accountService.id != 0){
           this.id = this.accountService.id;
+          console.log(this.id);
         }
 
 
@@ -62,6 +65,12 @@ export class StudentdetailsComponent implements OnInit {
             this.comments = comments;
             console.log(comments);
           })
+            console.log(this.student.id);
+            this.studentService.getStudentProgram(this.student.id).subscribe(response => {
+              this.studentItems = response;
+              console.log(response);
+            })
+
 
         }, error=>console.log(error))
         console.log(this.student);

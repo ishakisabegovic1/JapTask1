@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.31" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.31" />
+    <PackageReference Include="Hangfire.SqlServer.MSMQ" Version="1.7.31" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.10.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.10.0" />
     <PackageReference Include="SendGrid" Version="9.28.1" />
@@ -16,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JAP.Core\JAP.Core.csproj" />
+    <ProjectReference Include="..\JAP.Database\JAP.Database.csproj" />
   </ItemGroup>
 
 </Project>

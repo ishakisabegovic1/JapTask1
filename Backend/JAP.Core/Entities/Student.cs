@@ -1,3 +1,4 @@
+using JAP.Core.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace JAP.Core
@@ -21,5 +22,8 @@ namespace JAP.Core
     public virtual User User { get; set; }
 
     public virtual ICollection<Comment>? Comments { get; set; }
+    //public int ProgramId { get; set; }
+
+    public ICollection<ProgramItemStudent> Items { get; set; }
   }
 }

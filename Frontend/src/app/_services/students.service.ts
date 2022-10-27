@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { PaginatedResult } from '../_models/Pagination';
 import { Student } from '../_models/Student';
 import { StudentClass } from '../_models/StudentClass';
+import { StudentItem } from '../_models/StudentItem';
 import { StudentParams } from '../_models/StudentParams';
 
 // const httpOptions = {
@@ -34,9 +35,9 @@ export class StudentsService {
     this.studentParams = new StudentParams();
     return this.studentParams;
   }
-  
+
   // getStudents() {
-    
+
   //   return this.http.get<Student[]>(this.baseUrl+'Students');
   // }
 
@@ -54,7 +55,7 @@ export class StudentsService {
     return this.http.get<Student[]>(this.baseUrl+'Students', { observe: 'response', params}).pipe(
       map(response => {
         this.paginatedResult.result=response.body;
-        
+
         if(response.headers.get('Pagination') != null){
           this.paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
         }
@@ -74,10 +75,14 @@ export class StudentsService {
     return this.http.get<Student[]>(this.baseUrl+'Students/selectionStudents/'+id);
   }
 
+  getStudentProgram(id: number){
+    return this.http.get<StudentItem[]>(this.baseUrl+'Students/studentProgram/'+id);
+  }
+
   updateStudent(student: Student){
     return this.http.put<Student>(this.baseUrl + 'Students/edit-student/'+student.id, student);
   }
-  
+
   addStudent(student:StudentClass){
     return this.http.post<StudentClass>(this.baseUrl + 'Students/add-student', student);
   }

@@ -1,6 +1,8 @@
 
+using Hangfire;
 using JAP.Core;
 using JAP.Core.Interfaces;
+using JAP.Core.Interfaces.Repositories;
 using JAP.Core.MapperProfiles;
 using JAP.Database;
 using JAP.Repositories;
@@ -27,7 +29,11 @@ namespace Api.Extensions
       services.AddScoped<ICommentRepository, CommentRepository>();
       services.AddScoped<ICommentService, CommentService>();
 
+      services.AddScoped<IItemRepository, ItemRepository>();
+      services.AddScoped<IItemService, ItemService>();
+
       services.AddScoped<IAuthService, AuthService>();
+      services.AddScoped<IHangfireService, HangfireService>();
 
       services.AddScoped<IEmailService, EmailService>();
 
@@ -35,6 +41,11 @@ namespace Api.Extensions
 
       services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
           config.GetConnectionString("DefaultConnection")));
+
+      services.AddHangfire(x => x.UseSqlServerStorage(config.GetConnectionString("DefaultConnection")));
+      services.AddHangfireServer();
+
+      services.AddHostedService<HangfireHostedService>();
 
 
       return services;

@@ -2,6 +2,7 @@
 using Api.Extensions;
 using JAP.Common;
 using JAP.Core;
+using JAP.Core.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -49,6 +50,14 @@ namespace Api.Controllers
       return Ok(returnList);
     }
 
+    [HttpGet("studentProgram/{id}")]
+    public async Task<ActionResult<List<ProgramItemStudentView>>> GetStudentProgram(int id)
+    {
+      var returnList = await _studentService.GetStudentProgramById(id);
+      if (returnList == null) return BadRequest();
+      return Ok(returnList);
+    }
+
 
     [HttpPost("add-student")]
     public async Task<ActionResult<StudentUpdateDto>> AddStudent(StudentUpdateDto studentDto)
@@ -57,7 +66,7 @@ namespace Api.Controllers
         return BadRequest("Invalid student status");
 
       var addedStudent = await _studentService.AddStudent(studentDto);
-      _emailService.SendPlainTextEmail("ishakisabegovic@gmail.com", studentDto.Name.Trim().ToLower(), "Student1");
+      //_emailService.SendPlainTextEmail("ishakisabegovic@gmail.com", studentDto.Name.Trim().ToLower(), "Student1");
 
       return Ok(addedStudent);
     }
@@ -83,6 +92,15 @@ namespace Api.Controllers
       var student = await _studentService.DeleteStudent(id);
       return Ok(student);
 
+    }
+
+    [HttpPost("add-student-item")] // omoguciti dodavanje instance ProgramItemStudent, tj prosirivanje itema za kolone koje pripadaju studentu
+    public async Task<ActionResult<StudentDto>> AddItemToStudent(StudentDto req)
+    {
+
+      var res = await _studentService.AddItemsToStudent(req);
+      if (res == null) return BadRequest();
+      return Ok(res);
     }
 
     private bool ValidateStatus(string status)

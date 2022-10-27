@@ -32,6 +32,11 @@ namespace JAP.Services
 
     }
 
+    public async Task<List<SelectionDto>> GetSelectionsByProgramId(int programId)
+    {
+      return await _selectionRepository.GetSelectionsByProgramId(programId);
+    }
+
     public async Task<SelectionDto> AddSelection(SelectionDto selectionDto)
     {
       var selection = new Selection
@@ -39,11 +44,11 @@ namespace JAP.Services
         Name = selectionDto.Name,
         StartDate = selectionDto.StartDate,
         EndDate = selectionDto.EndDate,
-        ProgramId = selectionDto.JapId,
+        ProgramId = selectionDto.ProgramId,
         Status = selectionDto.Status,
         //Program = selectionDto.Program
       };
-      //var selection = _mapper.Map<Entities.Selection>(selectionDto);
+      //var selection = _mapper.Map<Selection>(selectionDto);
       _selectionRepository.Add(selection);
 
       return selectionDto;
@@ -64,7 +69,7 @@ namespace JAP.Services
         Name = selectionDto.Name,
         StartDate = selectionDto.StartDate,
         EndDate = selectionDto.EndDate,
-        ProgramId = selectionDto.JapId,
+        ProgramId = selectionDto.ProgramId,
         Status = selectionDto.Status,
         //Program = selectionDto.Program
       };

@@ -21,6 +21,12 @@ namespace JAP.Database.Configurations
       builder
           .HasMany(x => x.Comments).WithOne(x => x.Student);
 
+      builder
+        .HasMany(x => x.Items)
+        .WithOne(x => x.Student)
+        .HasForeignKey(x => x.StudentId);
+
+
 
     }
   }

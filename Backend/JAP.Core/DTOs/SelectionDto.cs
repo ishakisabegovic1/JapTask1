@@ -15,7 +15,7 @@ namespace JAP.Core
     [Required]
     public string Status { get; set; }
     [Required]
-    public int JapId { get; set; }
-    public string Jap { get; set; }
+    public int ProgramId { get; set; }
+    public string Program { get; set; }
   }
 }

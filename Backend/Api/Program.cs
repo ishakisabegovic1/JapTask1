@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 using JAP.Database;
 using JAP.Core;
+using Hangfire;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 app.UseAuthentication();
 app.UseAuthorization();

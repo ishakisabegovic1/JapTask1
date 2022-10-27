@@ -15,3 +15,5 @@ C:\Users\IshakIsabegovic\OneDrive - Maestral Solutions\Desktop\JAPTask1\JapTask1
 C:\Users\IshakIsabegovic\OneDrive - Maestral Solutions\Desktop\JAPTask1\JapTask1\Backend\JAP.Services\obj\Debug\net6.0\refint\JAP.Services.dll
 C:\Users\IshakIsabegovic\OneDrive - Maestral Solutions\Desktop\JAPTask1\JapTask1\Backend\JAP.Services\obj\Debug\net6.0\JAP.Services.pdb
 C:\Users\IshakIsabegovic\OneDrive - Maestral Solutions\Desktop\JAPTask1\JapTask1\Backend\JAP.Services\obj\Debug\net6.0\ref\JAP.Services.dll
+C:\Users\IshakIsabegovic\OneDrive - Maestral Solutions\Desktop\JAPTask1\JapTask1\Backend\JAP.Services\bin\Debug\net6.0\JAP.Database.dll
+C:\Users\IshakIsabegovic\OneDrive - Maestral Solutions\Desktop\JAPTask1\JapTask1\Backend\JAP.Services\bin\Debug\net6.0\JAP.Database.pdb

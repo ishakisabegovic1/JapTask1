@@ -42,5 +42,23 @@ namespace JAP.Services
       return message;
 
     }
+
+    public async Task<string> SendSelectionReportEmail(AdminReportDto req)
+    {
+      string fromEmail = _config["SendGridEmailSettings:FromEmail"];
+      string fromName = _config["SendGridEmailSettingsFromName"];
+
+      var msg = new SendGridMessage()
+      {
+        From = new EmailAddress(fromEmail, fromName),
+        Subject = "Selection report",
+        PlainTextContent = $"Selection Name: {req.SelName}\nProgram Name:{req.PrName}\nSuccess Rate:{req.SuccessRate}"
+
+      };
+      msg.AddTo("ishakisabegovic@gmail.com");
+      var response = await _sendGridClient.SendEmailAsync(msg);
+      string message = response.IsSuccessStatusCode ? "Email sent" : "Email sending failed";
+      return message;
+    }
   }
 }

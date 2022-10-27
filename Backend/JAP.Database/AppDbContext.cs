@@ -1,5 +1,6 @@
 
 using JAP.Core;
+using JAP.Core.Entities;
 //using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -22,17 +23,16 @@ namespace JAP.Database
 
 
     public DbSet<User> Users { get; set; }
-
     public DbSet<Student> Students { get; set; }
-
     public DbSet<Selection> Selections { get; set; }
-
     public DbSet<JAP.Core.Program> Programs { get; set; }
-
     public DbSet<Comment> Comments { get; set; }
-
     public DbSet<Admin> Admins { get; set; }
     public DbSet<AdminReportDto> AdminReports { get; set; }
+    public DbSet<Item> Items { get; set; }
+    public DbSet<ProgramItem> ProgramItems { get; set; }
+    public DbSet<ProgramItemStudent> ProgramItemStudents { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

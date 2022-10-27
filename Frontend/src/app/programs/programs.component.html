@@ -1,0 +1,40 @@
+<table class="table table-hover mr-5">
+    <thead>
+      <tr>
+
+        <th scope="col">#
+
+        </th>
+        <th scope="col">Program Name
+
+        </th>
+        <th scope ="col">
+          Actions
+        </th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+
+
+    <tr *ngFor="let jap of japs" >
+
+        <td style="width:6%"></td>
+        <td>{{jap.name}}</td>
+        <td>
+          <button routerLink="/program/{{jap.id}}" class="btn btn-sm btn-primary mr-2">
+              <a>Details</a>
+          </button>
+          <button routerLink="/programs/edit/{{jap.id}}"  class="btn btn-sm btn-primary mr-2">Edit</button>
+          <button  class="btn btn-sm btn-primary mr-2"  (click)="deleteProgram(jap.id)">Delete</button>
+
+
+      </td>
+    </tr>
+
+
+    </tbody>
+  </table>
+
+  <button routerLink="/programs/add" class="btn btn-primary mx-2 my-2">Add new program</button>

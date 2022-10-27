@@ -25,15 +25,15 @@ export class StudentsComponent implements OnInit {
   pageSize = 5;
   studentid: Number;
   constructor(private studentService: StudentsService, private accountService: AccountService, private route:Router) {
-    
+
    }
 
   ngOnInit(): void {
-    
+
     this.loadStudents();
-    
+
     if(this.accountService.isStudent) {
-      
+
       this.accountService.currentUser$.pipe(
         map((response:User)=>
         {
@@ -41,16 +41,16 @@ export class StudentsComponent implements OnInit {
           console.log(this.studentid);
         })
 
-        
 
-        
+
+
       )
       this.route.navigateByUrl(environment.apiUrl+'/Student/'+ this.studentid);
     }
   }
 
   loadStudents(){
-    
+
     this.studentService.getStudents(this.pageNumber, this.pageSize, this.nameFilter, this.selectionFilter,this.statusFilter, this.orderby).subscribe(response => {
       console.log(response.result);
       this.students = response.result;
@@ -72,7 +72,7 @@ export class StudentsComponent implements OnInit {
 
   onFilter(){
     console.log(this.nameFilter);
-    if(this.nameFilter=="") this.nameFilter=null; 
+    if(this.nameFilter=="") this.nameFilter=null;
     if(this.selectionFilter=="") this.selectionFilter=null;
     if(this.statusFilter=="") this.statusFilter=null;
     this.orderby=null;
@@ -93,5 +93,5 @@ export class StudentsComponent implements OnInit {
     this.loadStudents();
   }
 
-  
+
 }

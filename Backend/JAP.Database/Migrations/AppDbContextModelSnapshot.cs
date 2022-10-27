@@ -54,8 +54,8 @@ namespace JAP.Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SuccessRate")
-                        .HasColumnType("int");
+                    b.Property<decimal>("SuccessRate")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("numberOfStudents")
                         .HasColumnType("int");
@@ -100,7 +100,7 @@ namespace JAP.Database.Migrations
                         {
                             Id = 1,
                             AdminId = 1,
-                            CreatedAt = new DateTime(2022, 10, 18, 9, 22, 56, 939, DateTimeKind.Local).AddTicks(1461),
+                            CreatedAt = new DateTime(2022, 10, 21, 15, 30, 48, 545, DateTimeKind.Local).AddTicks(8881),
                             StudentId = 1,
                             comment = "komentar"
                         },
@@ -108,10 +108,111 @@ namespace JAP.Database.Migrations
                         {
                             Id = 2,
                             AdminId = 1,
-                            CreatedAt = new DateTime(2022, 10, 18, 9, 22, 56, 939, DateTimeKind.Local).AddTicks(1463),
+                            CreatedAt = new DateTime(2022, 10, 21, 15, 30, 48, 545, DateTimeKind.Local).AddTicks(8884),
                             StudentId = 2,
                             comment = "komentar1"
                         });
+                });
+
+            modelBuilder.Entity("JAP.Core.Entities.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ExpectedNumberOfHours")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsLecture")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("JAP.Core.Entities.ProgramItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProgramId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("ProgramId");
+
+                    b.ToTable("ProgramItems");
+                });
+
+            modelBuilder.Entity("JAP.Core.Entities.ProgramItemStudent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DoneByCandidate")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProgramItemId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StatusByCandidate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProgramItemId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("ProgramItemStudents");
                 });
 
             modelBuilder.Entity("JAP.Core.Program", b =>
@@ -140,25 +241,25 @@ namespace JAP.Database.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2022, 10, 18, 9, 22, 56, 939, DateTimeKind.Local).AddTicks(1312),
+                            CreatedAt = new DateTime(2022, 10, 21, 15, 30, 48, 545, DateTimeKind.Local).AddTicks(8729),
                             Name = "DEV"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2022, 10, 18, 9, 22, 56, 939, DateTimeKind.Local).AddTicks(1342),
+                            CreatedAt = new DateTime(2022, 10, 21, 15, 30, 48, 545, DateTimeKind.Local).AddTicks(8762),
                             Name = "QA"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2022, 10, 18, 9, 22, 56, 939, DateTimeKind.Local).AddTicks(1344),
+                            CreatedAt = new DateTime(2022, 10, 21, 15, 30, 48, 545, DateTimeKind.Local).AddTicks(8764),
                             Name = "DevOps"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2022, 10, 18, 9, 22, 56, 939, DateTimeKind.Local).AddTicks(1346),
+                            CreatedAt = new DateTime(2022, 10, 21, 15, 30, 48, 545, DateTimeKind.Local).AddTicks(8766),
                             Name = "TA"
                         });
                 });
@@ -231,7 +332,7 @@ namespace JAP.Database.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2022, 10, 18, 9, 22, 56, 939, DateTimeKind.Local).AddTicks(1443),
+                            CreatedAt = new DateTime(2022, 10, 21, 15, 30, 48, 545, DateTimeKind.Local).AddTicks(8864),
                             EndDate = new DateTime(2022, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "DEV 09/21",
                             ProgramId = 1,
@@ -241,7 +342,7 @@ namespace JAP.Database.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2022, 10, 18, 9, 22, 56, 939, DateTimeKind.Local).AddTicks(1448),
+                            CreatedAt = new DateTime(2022, 10, 21, 15, 30, 48, 545, DateTimeKind.Local).AddTicks(8870),
                             EndDate = new DateTime(2022, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "QA 09/21",
                             ProgramId = 2,
@@ -492,6 +593,44 @@ namespace JAP.Database.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("JAP.Core.Entities.ProgramItem", b =>
+                {
+                    b.HasOne("JAP.Core.Entities.Item", "Item")
+                        .WithMany("ProgramItems")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JAP.Core.Program", "Program")
+                        .WithMany("ProgramItems")
+                        .HasForeignKey("ProgramId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
+
+                    b.Navigation("Program");
+                });
+
+            modelBuilder.Entity("JAP.Core.Entities.ProgramItemStudent", b =>
+                {
+                    b.HasOne("JAP.Core.Entities.ProgramItem", "ProgramItem")
+                        .WithMany("Students")
+                        .HasForeignKey("ProgramItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JAP.Core.Student", "Student")
+                        .WithMany("Items")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProgramItem");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("JAP.Core.Selection", b =>
                 {
                     b.HasOne("JAP.Core.Program", "Program")
@@ -582,8 +721,20 @@ namespace JAP.Database.Migrations
                     b.Navigation("Comments");
                 });
 
+            modelBuilder.Entity("JAP.Core.Entities.Item", b =>
+                {
+                    b.Navigation("ProgramItems");
+                });
+
+            modelBuilder.Entity("JAP.Core.Entities.ProgramItem", b =>
+                {
+                    b.Navigation("Students");
+                });
+
             modelBuilder.Entity("JAP.Core.Program", b =>
                 {
+                    b.Navigation("ProgramItems");
+
                     b.Navigation("Selections");
                 });
 
@@ -600,6 +751,8 @@ namespace JAP.Database.Migrations
             modelBuilder.Entity("JAP.Core.Student", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("JAP.Core.User", b =>

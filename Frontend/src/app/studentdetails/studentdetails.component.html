@@ -65,3 +65,48 @@
 </div>
 
 
+<table class="table table-hover mr-5">
+  <thead>
+    <tr>
+
+      <th scope="col">No.
+
+      </th>
+      <th scope="col">Name
+
+      </th>
+      <th scope ="col">
+        Url
+      </th>
+      <th scope ="col">
+        Desc
+      </th>
+      <th scope ="col">
+        Exp Hours
+      </th>
+      <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
+      <th scope="col">Done By Candidate</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+  <tr *ngFor="let item of studentItems" >
+
+      <td style="width:6%">{{item.orderNumber}}</td>
+      <td>{{item.itemName}}</td>
+      <td>{{item.url}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.expHours}}</td>
+      <td>{{item.startDate  | date:"MMM d, y"}}</td>
+      <td>{{item.endDate  | date:"MMM d, y"}}</td>
+      <td>{{item.doneByCandidate}}</td>
+  </tr>
+
+
+  </tbody>
+</table>
+
+
+

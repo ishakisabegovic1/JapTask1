@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JAP.Core;
+using System.Security.Cryptography.X509Certificates;
 
 namespace JAP.Database.Configurations
 {
@@ -17,6 +18,15 @@ namespace JAP.Database.Configurations
       builder
         .HasMany(x => x.Selections)
         .WithOne(x => x.Program);
+
+      builder
+        .HasMany(x => x.ProgramItems)
+        .WithOne(p => p.Program)
+        .HasForeignKey(x => x.ProgramId)
+        .IsRequired();
+
+
+
 
     }
   }

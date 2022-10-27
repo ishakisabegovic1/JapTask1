@@ -33,6 +33,14 @@ namespace JAP.Repositories
 
     }
 
+    public async Task<List<SelectionDto>> GetSelectionsByProgramId(int programId)
+    {
+      return _mapper.Map<List<SelectionDto>>
+        (await _context.Selections
+        .Where(x => x.ProgramId == programId)
+        .ToListAsync());
+    }
+
     public async Task<List<SelectionDto>> GetSelectionsAsync([FromQuery] SelectionParams userParams)
     {
       var query = _context.Selections

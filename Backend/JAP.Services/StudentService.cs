@@ -2,6 +2,8 @@
 using AutoMapper;
 using JAP.Common;
 using JAP.Core;
+using JAP.Core.DTOs;
+using JAP.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
@@ -13,15 +15,17 @@ namespace JAP.Services
     private readonly IStudentRepository _studentRepository;
     private readonly IMapper _mapper;
     private readonly UserManager<User> _userManager;
+    private readonly IEmailService _emailService;
 
-
-    public StudentService(IStudentRepository studentRepository, IMapper mapper,
-      UserManager<User> userManager)
+    public StudentService(IStudentRepository studentRepository,
+      IMapper mapper,
+      UserManager<User> userManager,
+      IEmailService emailService)
     {
       _studentRepository = studentRepository;
       _mapper = mapper;
       _userManager = userManager;
-
+      _emailService = emailService;
     }
 
     public async Task<List<StudentDto>> GetStudentsAsync([FromQuery] StudentParams userParams)
@@ -32,10 +36,19 @@ namespace JAP.Services
     {
       return await _studentRepository.GetStudentById(id);
     }
+    public async Task<List<ProgramItemStudentView>> GetStudentProgramById(int studentId)
+    {
+      return await _studentRepository.GetStudentProgramById(studentId);
+    }
 
     public async Task<List<StudentDto>> GetStudentsBySelectionId(int id)
     {
       return await _studentRepository.GetStudentsBySelectionId(id);
+    }
+
+    public async Task<StudentDto> AddItemsToStudent(StudentDto req)
+    {
+      return await _studentRepository.AddItemsToStudent(req);
     }
 
     public async Task<StudentUpdateDto> AddStudent(StudentUpdateDto studentDto)
@@ -49,21 +62,33 @@ namespace JAP.Services
 
         var result = await _userManager.CreateAsync(user, "Student1"); //password je Student1, mora biti uppercase i broj
 
-        await _userManager.AddToRoleAsync(user, "Student");
-
-        var student = new Student
+        if (result.Succeeded)
         {
-          Name = studentDto.Name,
-          DateOfBirth = studentDto.DateOfBirth,
-          Address = studentDto.Address,
-          SelectionId = studentDto.SelectionId,
-          Status = studentDto.Status,
-          UserId = user.Id
-        };
+          await _userManager.AddToRoleAsync(user, "Student");
 
-        var addedStudent = await _studentRepository.Add(student);
-        var returnStudent = _mapper.Map<StudentUpdateDto>(addedStudent);
-        return returnStudent;
+          var student = new Student
+          {
+            Name = studentDto.Name,
+            DateOfBirth = studentDto.DateOfBirth,
+            Address = studentDto.Address,
+            SelectionId = studentDto.SelectionId,
+            Status = studentDto.Status,
+            UserId = user.Id
+          };
+
+
+          var addedStudent = await _studentRepository.Add(student);
+
+          var addedStudentItems = await _studentRepository.AddItemsToStudent(_mapper.Map<StudentDto>(addedStudent));
+
+          var returnStudent = _mapper.Map<StudentUpdateDto>(addedStudent);
+
+          _emailService.SendPlainTextEmail("ishakisabegovic@gmail.com", user.UserName, "Student1");
+
+          return returnStudent;
+        }
+        else
+          return null;
       }
       catch (Exception ex)
       {

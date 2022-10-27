@@ -11,5 +11,6 @@ namespace JAP.Core
     Task<SelectionDto> AddSelection(SelectionDto selectionDto);
     Task<SelectionDto> EditSelection(SelectionDto selectionDto);
     Task<SelectionDto> DeleteSelection(int id);
+    Task<List<SelectionDto>> GetSelectionsByProgramId(int programId);
   }
 }

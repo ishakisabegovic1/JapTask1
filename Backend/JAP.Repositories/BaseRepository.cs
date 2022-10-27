@@ -13,7 +13,7 @@ namespace JAP.Repositories
       _context = context;
     }
 
-    public async Task<T> Add(T entity)
+    public virtual async Task<T> Add(T entity)
     {
       _context.Set<T>().Add(entity);
       await _context.SaveChangesAsync();

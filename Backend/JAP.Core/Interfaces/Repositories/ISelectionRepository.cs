@@ -8,5 +8,6 @@ namespace JAP.Core
   {
     Task<List<SelectionDto>> GetSelectionsAsync([FromQuery] SelectionParams userParams);
     Task<SelectionDto> GetSelectionById(int id);
+    Task<List<SelectionDto>> GetSelectionsByProgramId(int programId);
   }
 }

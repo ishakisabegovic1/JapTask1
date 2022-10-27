@@ -1,0 +1,32 @@
+<div class="col g-5">
+
+  <div class="col-4">
+      <h1>Edit item</h1>
+  </div>
+
+<div class="col-5">
+
+  <form #editForm="ngForm" (ngSubmit)="editItem()">
+  <label class="form-label mx-2">Name</label>
+  <input [(ngModel)]="item.name" type="text" name="name" class="form-control mx-2 mb-3"/>
+  <label class="form-label mx-2">Description</label>
+  <input [(ngModel)]="item.description" type="text" name="description" class="form-control mx-2 mb-3"/>
+  <label class="form-label mx-2">Url</label>
+  <input [(ngModel)]="item.url" type="text" name="url" class="form-control mx-2 mb-3"/>
+
+  <label class="form-label mx-2">Expected number of hours</label>
+  <input [(ngModel)]="item.expectedNumberOfHours" type="number" name="expectedNumberOfHours" class="form-control mx-2 mb-3" />
+
+  <button [disabled]="!editForm.dirty"  type="submit" class="btn btn-success mx-2 my-4">Add</button>
+  <button class="btn btn-secondary mx-2 my-4" routerLink="/items">Back</button>
+</form>
+
+
+
+
+
+</div>
+
+
+  </div>
+
