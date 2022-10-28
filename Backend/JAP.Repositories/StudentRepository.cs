@@ -8,6 +8,7 @@ using JAP.Core.DTOs;
 using JAP.Core.Entities;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Collections.Generic;
 
 namespace JAP.Repositories
 {
@@ -15,11 +16,13 @@ namespace JAP.Repositories
   {
     private readonly AppDbContext _context;
     private readonly IMapper _mapper;
+    private readonly IProgramRepository _programRepository;
 
-    public StudentRepository(AppDbContext context, IMapper mapper) : base(context)
+    public StudentRepository(AppDbContext context, IMapper mapper, IProgramRepository programRepository) : base(context)
     {
       _context = context;
       _mapper = mapper;
+      _programRepository = programRepository;
     }
 
     public override async Task<Student> Add(Student entity)
@@ -37,13 +40,18 @@ namespace JAP.Repositories
     public async Task<List<ProgramItemStudentView>> GetStudentProgramById(int studentId)
     {
       var list = new List<ProgramItemStudentView>();
+
       var itemsList = await _context.ProgramItemStudents
         .Include(x => x.Student)
         .Include(x => x.ProgramItem)
         .ThenInclude(x => x.Item)
         .Where(x => x.StudentId == studentId)
         .ToListAsync();
-
+      if (itemsList.Count() > 0)
+      {
+        int programId = itemsList.FirstOrDefault(x => x.StudentId == studentId).ProgramItem.ProgramId;
+        await _programRepository.OrderItems(programId);
+      }
       foreach (var item in itemsList)
       {
         list.Add(new ProgramItemStudentView

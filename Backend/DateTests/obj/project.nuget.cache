@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XDw62ec/o/O60aWE54IPPPi1GIrGn48Tazuf3CmEClBB/i71A1bRub5M78Q8XBQvgDBIrCM1s7gXxDEUm4iM/Q==",
+  "dgSpecHash": "4UySqKQJLsX+9BS8O9dqq3wkcFSuyGGpVwsBg3rGQqdXaBy4jlGkFruWZO5ggcN0z565Jbk63YPUFt6Hq25bkg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\DateTests\\DateTests.csproj",
+  "projectFilePath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\DateTests\\JAP.DateTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\IshakIsabegovic\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\IshakIsabegovic\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

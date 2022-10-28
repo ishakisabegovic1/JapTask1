@@ -94,7 +94,17 @@
 
   <tr *ngFor="let item of studentItems" >
 
-      <td style="width:6%">{{item.orderNumber}}</td>
+      <td style="width:6%">{{item.orderNumber}}
+        <!-- <select [(ngModel)]="item.orderNumber" name="orderNumber" class="form-control mx-2 mb-3" type="text">
+
+          <option *ngFor="let item of studentItems" [value]="item.orderNumber">
+              {{item.orderNumber}}
+          </option>
+
+
+      </select> -->
+
+      </td>
       <td>{{item.itemName}}</td>
       <td>{{item.url}}</td>
       <td>{{item.description}}</td>

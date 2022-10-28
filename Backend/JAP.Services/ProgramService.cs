@@ -66,6 +66,11 @@ namespace JAP.Services
       return _mapper.Map<ProgramDto>(res);
     }
 
+    public async Task<ProgramItemUpsert> EditProgramItem(ProgramItemUpsert req, int newOrderNumber)
+    {
+      return await _programRepository.EditProgramItem(req, newOrderNumber);
+    }
+
     public async Task<ProgramItemUpsert> AddItemToProgram(ProgramItemUpsert req)
     {
       var res = await _programRepository.AddItemToProgram(req);

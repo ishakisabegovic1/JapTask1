@@ -7,6 +7,8 @@ using JAP.Core.Entities;
 using JAP.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 
 namespace JAP.Repositories
 {
@@ -112,8 +114,60 @@ namespace JAP.Repositories
       return _mapper.Map<ProgramItemUpsert>(await _context.ProgramItems.FirstOrDefaultAsync(x => x.ProgramId == req.ProgramId && x.ItemId == req.ItemId));
     }
 
+    public async Task<ProgramItemUpsert> EditProgramItem(ProgramItemUpsert req, int newOrderNumber)
+    {
+
+      var list = _context.ProgramItems.Where(x => x.ProgramId == req.ProgramId).ToList();
+      if (newOrderNumber > 0 && newOrderNumber <= list.Count())
+      {
+
+        //var programItem = await _context.ProgramItems.FirstOrDefaultAsync(x => x.Id == req.Id);
+        //var programItemToChange = await _context.ProgramItems.FirstOrDefaultAsync(x => x.OrderNumber == newOrderNumber);
+        //var temp = list[newOrderNumber - 1].OrderNumber;
+        // var temp = list.ElementAt(newOrderNumber - 1).OrderNumber;
+        //var exOrderNumber = req.OrderNumber;
+
+        for (int i = 0; i < list.Count(); i++)
+        {
+          if (i == req.OrderNumber - 1)
+          {
+            list.ElementAt(i).OrderNumber = newOrderNumber;
+            _context.ProgramItems.Update(list.ElementAt(i));
+          }
+          else if (i == newOrderNumber - 1)
+          {
+            list.ElementAt(i).OrderNumber = newOrderNumber + 1;
+            _context.ProgramItems.Update(list.ElementAt(i));
+            //i++;
+          }
+          else
+          {
+            list.ElementAt(i).OrderNumber = i + 1;
+            _context.ProgramItems.Update(list.ElementAt(i));
+          }
+
+        }
 
 
 
+        await _context.SaveChangesAsync();
+
+
+
+      }
+      return req;
+    }
+
+
+    public async Task OrderItems(int programId)
+    {
+      var list = _context.ProgramItems.Where(x => x.ProgramId == programId).ToList();
+      int order = 1;
+      foreach (var l in list)
+      {
+        l.OrderNumber = order++;
+        _context.ProgramItems.Update(l);
+      }
+    }
   }
 }

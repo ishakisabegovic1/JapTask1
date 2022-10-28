@@ -19,13 +19,13 @@ export class StudenteditComponent implements OnInit {
   selection: Selection;
   selections: Selection[];
   jap: string;
-  
+
   private sub:any;
 
   constructor(private studentService:StudentsService, private route: ActivatedRoute, private selectionService:SelectionsService) {
 
    }
-   
+
   ngOnInit(): void {
     this.loadStudent();
     this.selectionService.getSelections().subscribe(selections=>{
@@ -39,26 +39,27 @@ export class StudenteditComponent implements OnInit {
       this.id = +params['id'];
     });
 
-    this.studentService.getStudent(this.id).subscribe(student => {        
-      this.student=student;    
+    this.studentService.getStudent(this.id).subscribe(student => {
+      this.student=student;
 
       this.selectionService.getSelection(this.student.selectionId).subscribe(selection =>{
         this.selection = selection;
         console.log(selection);
-       
-      }, error=>console.log(error))      
+
+      }, error=>console.log(error))
       console.log(this.student);
-    }, error => console.log(error));    
+    }, error => console.log(error));
   }
 
   updateStudent(){
-    
-    this.studentService.updateStudent(this.student).subscribe(()=>{
+
+    this.studentService.updateStudent(this.student).subscribe(response=>{
       console.log(this.student);
+      console.log(response);
       this.editForm.reset(this.student);
     }, error => console.log(error))
-    
+
   }
 
-  
+
 }

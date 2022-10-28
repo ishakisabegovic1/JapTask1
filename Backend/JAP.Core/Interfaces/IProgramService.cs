@@ -12,6 +12,7 @@ namespace JAP.Core
 
     Task<ProgramItemUpsert> AddItemToProgram(ProgramItemUpsert req);
     Task<ProgramDto> EditProgram(ProgramDto req);
+    Task<ProgramItemUpsert> EditProgramItem(ProgramItemUpsert req, int newOrderNumber);
     Task<ProgramDto> DeleteProgram(int id);
   }
 }

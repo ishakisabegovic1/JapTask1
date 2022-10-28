@@ -25,6 +25,8 @@ export class StudentdetailsComponent implements OnInit {
   newComment = new Comment();
   comments:UserStudent[];
   studentItems: StudentItem[];
+  orderList: number[];
+
 
   private sub:any;
 
@@ -44,9 +46,9 @@ export class StudentdetailsComponent implements OnInit {
 
     loadStudent(){
 
-      this.sub = this.route.params.subscribe(params=> {
-        this.id = +params['id'];
-      });
+      // this.sub = this.route.params.subscribe(params=> {
+      //   this.id = +params['id'];
+      // });
 // popraviti
         if(this.accountService.id != 0){
           this.id = this.accountService.id;
@@ -72,6 +74,8 @@ export class StudentdetailsComponent implements OnInit {
             })
 
 
+
+
         }, error=>console.log(error))
         console.log(this.student);
       }, error => console.log(error));
@@ -87,16 +91,18 @@ export class StudentdetailsComponent implements OnInit {
       this.newComment.adminId = 3;
         this.commentService.addNewComment(this.newComment).subscribe(()=>{
           console.log(this.newComment);
+          this.loadStudent();
         }, error=>console.log(error));
       }
-        this.loadStudent();
+
     }
 
     deleteComment(id:number){
       this.commentService.deleteComment(id).subscribe(()=>{
         console.log(this.newComment);
+        this.loadStudent();
       },error=>console.log(error));
-      this.loadStudent();
+
     }
 
 

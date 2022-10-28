@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JAP.Repositories", "JAP.Rep
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JAP.Services", "JAP.Services\JAP.Services.csproj", "{1541BB35-0F11-4B2B-9D31-6520F77C495E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTests", "DateTests\DateTests.csproj", "{35C1990D-BA14-4697-93F3-11820293875B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JAP.DateTests", "DateTests\JAP.DateTests.csproj", "{35C1990D-BA14-4697-93F3-11820293875B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

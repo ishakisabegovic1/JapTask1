@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Jap } from '../_models/Jap';
@@ -43,7 +43,14 @@ export class JapsService {
     return this.http.get<ProgramClass>(this.baseUrl+'Programs/'+id);
   }
 
+  updateProgramItem(programItem: ProgramItemUpsert, newOrderNumber: number)
+  {
+    const params = new HttpParams()
+                      .set('id', programItem.id)
+                      .set('newOrderNumber', newOrderNumber);
 
+    return this.http.put(this.baseUrl+'Programs/edit-program-item/'+programItem.id, programItem, {params});
+  }
 
 
 

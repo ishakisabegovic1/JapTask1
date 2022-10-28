@@ -3943,9 +3943,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\DateTests\\DateTests.csproj",
-      "projectName": "DateTests",
-      "projectPath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\DateTests\\DateTests.csproj",
+      "projectUniqueName": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\DateTests\\JAP.DateTests.csproj",
+      "projectName": "JAP.DateTests",
+      "projectPath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\DateTests\\JAP.DateTests.csproj",
       "packagesPath": "C:\\Users\\IshakIsabegovic\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\IshakIsabegovic\\OneDrive - Maestral Solutions\\Desktop\\JAPTask1\\JapTask1\\Backend\\DateTests\\obj\\",
       "projectStyle": "PackageReference",

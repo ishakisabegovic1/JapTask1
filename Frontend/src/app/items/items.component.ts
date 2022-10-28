@@ -33,6 +33,7 @@ export class ItemsComponent implements OnInit {
       this.items = response.result;
       this.pagination = response.pagination;
       console.log(response);
+
     })
   }
 
@@ -52,6 +53,7 @@ export class ItemsComponent implements OnInit {
   deleteItem(id:number){
     this.itemService.deleteItem(id).subscribe(response=>{
       console.log(response);
+      this.loadItems();
     })
 
   }

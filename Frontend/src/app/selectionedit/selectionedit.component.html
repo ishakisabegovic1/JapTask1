@@ -11,16 +11,16 @@
     <form #editForm="ngForm" (ngSubmit)="updateSelection()">
     <label for="name" class="form-label mx-2">Name</label>
     <input [(ngModel)]="selection.name" type="text" name="name" class="form-control mx-2 mb-3"/>
-   
+
     <label for="selection" class="form-label mx-2">Jap</label>
-    <select [(ngModel)]="selection.japId"  name="japId" class="form-control mx-2 mb-3" type="text">  
-    
+    <select [(ngModel)]="selection.programId"  name="japId" class="form-control mx-2 mb-3" type="text">
+
         <option *ngFor="let jap of japs" [value]="jap.id">
-            {{jap.name}} 
+            {{jap.name}}
         </option>
 
 
-    </select>    
+    </select>
     <!-- <input [(ngModel)]="student.selectionId" type="text" name="selectionId" class="form-control mx-2"/> -->
     <label for="dateOfBirth" class="form-label mx-2">Start date</label>
     <input [(ngModel)]="selection.startDate" type="date" name="dateOfBirth" class="form-control mx-2 mb-3" />
@@ -29,20 +29,19 @@
     <select [(ngModel)]="selection.status"  name="studentStatus" class="form-control mx-2 mb-3" type="text">
         <option>Active</option>
         <option>Completed</option>
-   
+
 
     </select>
-   
+
     <button [disabled]="!editForm.dirty"  type="submit" class="btn btn-success mx-2 my-4">Save</button>
     <button class="btn btn-secondary mx-2 my-4" routerLink="/selections">Back</button>
 </form>
-   
-    
-   
 
-    
-</div>    
-    
-    
+
+
+
+
+</div>
+
+
     </div>
-    

@@ -62,6 +62,12 @@ namespace Api.Controllers
       return Ok(await _programService.EditProgram(req));
     }
 
+    [HttpPut("edit-program-item/{id}")]
+    public async Task<ActionResult<ProgramItemUpsert>> EditProgramItem(ProgramItemUpsert req, int newOrderNumber)
+    {
+      return Ok(await _programService.EditProgramItem(req, newOrderNumber));
+    }
+
     [HttpDelete("delete-program/{id}")]
     public async Task<ActionResult<ProgramDto>> DeleteProgram(int id)
     {
